@@ -11,12 +11,12 @@ export default function Authentication(props:{user:any}) {
       <>
       {props.user?
       <form action="/auth/sign-out" method="post">
-        <Button type="submit" color="primary" variant="flat">Log Out</Button>
+        <Button type="submit" color="danger" variant="flat">Log Out</Button>
       </form>
         :
         <>
         <Button onPress={onOpen} color="primary" variant="flat">Login</Button>
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+      <Modal backdrop="blur" isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
           {(onClose) => (
             <>
@@ -36,7 +36,8 @@ export default function Authentication(props:{user:any}) {
                   name="email"
                   id="email"
                   autoComplete="email"
-                  className="block w-full rounded-md border-0 bg-black/5 px-3.5 py-2 text-black dark:text-white shadow-sm ring-1 ring-inset ring-white/10 dark:ring-white/30 focus:ring-2 focus:ring-inset focus:to-blue-500 sm:text-sm sm:leading-6"
+                  className="rounded-md px-4 py-2 bg-inherit border mb-6"
+                  placeholder="youremail@domain.com"
                 />
                   <label className="text-md" htmlFor="password">
                     Password

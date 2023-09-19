@@ -10,16 +10,11 @@ export default function Header(props:{user:any}) {
             <NavbarBrand>
                 <SteinProgramsLogo></SteinProgramsLogo>
             </NavbarBrand>
-            {props.user?<NavbarContent className="flex sm:flex gap-4" justify="center">
-                <NavbarItem isActive>
-                <h2 className="bold">
-                    Connected as {props.user.email.split("@")[0]}
-                </h2>
-                </NavbarItem>
-            </NavbarContent>:null}
+            
             <NavbarContent justify="end">
                 <NavbarItem >
                     <Authentication user={props.user}></Authentication>
+                    
                 </NavbarItem>
             </NavbarContent>
         </Navbar>
