@@ -15,7 +15,7 @@ function submitEmail(email:string){
   });
 }
 
-export default function SubscribeNewsletter(props:{user:any}) {
+export default function SubscribeNewsletter() {
 
 
   return (
@@ -36,7 +36,7 @@ export default function SubscribeNewsletter(props:{user:any}) {
                     id="email"
                     autoComplete="email"
                     placeholder="youremail@domain.com"
-                    defaultValue={props.user?.email}
+                    defaultValue=""
                 />
                 <Button type="submit" color="primary" variant="solid" className="bg-blue-500 hover:bg-blue-400">Subscribe</Button>
               </form>

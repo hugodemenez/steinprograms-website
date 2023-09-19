@@ -21,7 +21,7 @@ async function getData(symbol:string) {
     return res.json()
   }
  
-export default async function Home(props:{user:any}) {
+export default async function Home() {
     interface TabProvider {
         id: string,
         label: string,
@@ -51,7 +51,7 @@ export default async function Home(props:{user:any}) {
                 </svg>
                 <TypeWriter text="Stein Programs"></TypeWriter>
             </div>
-            <SubscribeNewsletter user={props.user}></SubscribeNewsletter>
+            <SubscribeNewsletter></SubscribeNewsletter>
             <MarketNews tabs={tabs}></MarketNews>
             <Articles></Articles>
         </>
