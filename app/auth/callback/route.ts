@@ -17,5 +17,11 @@ export async function GET(request: Request) {
   }
 
   // URL to redirect to after sign in process completes
-  return NextResponse.redirect(requestUrl.origin)
+  return NextResponse.redirect(
+    `${requestUrl.origin}?message=Successfully authenticated user`,
+    {
+    // a 301 status is required to redirect from a POST to a GET route
+    status: 301,
+    }
+  )
 }

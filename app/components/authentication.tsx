@@ -2,7 +2,6 @@
 import React from "react";
 
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure} from "@nextui-org/react";
-import Messages from "../auth/messages";
 
 export default function Authentication(props:{user:any}) {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
@@ -58,7 +57,6 @@ export default function Authentication(props:{user:any}) {
                   >
                     Sign Up
                   </button>
-                  <Messages />
                 </form>
               </div>
               </ModalBody>
