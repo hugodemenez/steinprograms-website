@@ -1,7 +1,7 @@
 'use client';
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem} from "@nextui-org/react";
-import SteinProgramsLogo from "./components/logo";
-import Authentication from "./components/authentication";
+import SteinProgramsLogo from "./logo";
+import Authentication from "./authentication";
 
 
 export default function Header(props:{user:any}) {

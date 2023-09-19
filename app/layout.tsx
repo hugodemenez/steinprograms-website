@@ -2,8 +2,8 @@ import './globals.css'
 
 import { Analytics } from '@vercel/analytics/react';
 import {Providers} from "./components/providers";
-import Header from "./header";
-import Footer from './footer';
+import Header from "./components/header";
+import Footer from './components/footer';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 
