@@ -1,5 +1,49 @@
 'use client';
 import {Tabs, Tab, Card, CardBody, CardHeader} from "@nextui-org/react";
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { useEffect, useState } from 'react'
+
+
+
+function getMarketNews() {
+  const [marketNews, setMarketNews] = useState<any[]>([])
+
+  // Create a Supabase client configured to use cookies
+  const supabase = createClientComponentClient()
+
+  useEffect(() => {
+    const getMarketNews = async () => {
+      // This assumes you have a `todos` table in Supabase. Check out
+      // the `Create Table and seed with data` section of the README 👇
+      // https://github.com/vercel/next.js/blob/canary/examples/with-supabase/README.md
+      const { data } = await supabase.from('marketnews').select()
+      if (data && data.length > 0) {
+        setMarketNews(data)
+      }
+      else{
+        setMarketNews([
+            {
+                id: "1",
+                label: "Bitcoin",
+                content: "Recent news in the BTC crypto market includes upgrades to SHIB partner Welly's, analysis of BTC price using the Stock-to-Flow Model, Nomura launching an institutional Bitcoin fund, and the influence of Binance and SEC on Bitcoin price volatility. Bitcoin dominance is rising, and there are predictions for Bitcoin price in the coming years. Global investment bank Nomura is also entering the Bitcoin market. Additionally, there are reports of Elon Musk's financial plans for Twitter."
+            },
+            {
+                id: "2",
+                label: "More...",
+                content: "Sign up to know more about the crypto market and get the latest news on the crypto market."
+            }
+        ])
+      }
+    }
+
+    getMarketNews()
+  }, [supabase, setMarketNews])
+
+  return marketNews
+}
+
+
+
 
 interface TabProvider {
     id: string,
@@ -8,9 +52,12 @@ interface TabProvider {
 }
 
 
-export default function MarketNews({tabs}:{tabs:Array<TabProvider>}){
 
 
+
+export default function MarketNews(){
+    const tabs = getMarketNews() as Array<TabProvider>
+    console.log(tabs)
     return (
             <div className="mx-auto max-w-5xl px-6">
                 <h2 className="flex items-baseline gap-1 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-2 dark:text-white">

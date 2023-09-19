@@ -3,43 +3,8 @@ import TypeWriter from './components/typewriter'
 import SubscribeNewsletter from './components/newsletter'
 import MarketNews from './components/markets'
 
-
-async function getData(symbol:string) {
-    var res : Response
-    try{
-        res = await fetch(`${process.env.API_URL}/news/?password=${process.env.STEIN_API_KEY}&symbol=${symbol}`, { cache: 'no-store' })
-    }
-    catch(e){
-        throw new Error('Failed to fetch data')
-    }
-
-    if (!res.ok) {
-      // This will activate the closest `error.js` Error Boundary
-      throw new Error(res.statusText)
-    }
-   
-    return res.json()
-  }
  
 export default async function Home() {
-    interface TabProvider {
-        id: string,
-        label: string,
-        content: string,
-    }
-
-    const tabs = [
-        {
-            id: "btc",
-            label: "Bitcoin",
-            content: "Loading...",
-        },
-        {
-            id: "eth",
-            label: "Ethereum",
-            content: "Loading...",
-        }
-    ] as Array<TabProvider>
     
     return (
         <>
@@ -52,7 +17,7 @@ export default async function Home() {
                 <TypeWriter text="Stein Programs"></TypeWriter>
             </div>
             <SubscribeNewsletter></SubscribeNewsletter>
-            <MarketNews tabs={tabs}></MarketNews>
+            <MarketNews></MarketNews>
             <Articles></Articles>
         </>
     )
