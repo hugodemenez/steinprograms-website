@@ -28,7 +28,7 @@ export default function Authentication(props:{user:any}) {
                   action="/auth/sign-in"
                   method="post"
                 >
-                <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200">
+                <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
                   Email
                 </label>
                 <input
