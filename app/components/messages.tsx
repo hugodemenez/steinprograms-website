@@ -7,7 +7,7 @@ export default function Messages() {
   const searchParams = useSearchParams()
   const error = searchParams.get('error')
   const message = searchParams.get('message')
-  console.log(message,error)
+
   return (
     <>
       {error && (
@@ -20,6 +20,8 @@ export default function Messages() {
           {message}
         </p>
       )}
+
+    
     </>
   )
 }

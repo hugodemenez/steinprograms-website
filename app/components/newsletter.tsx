@@ -1,19 +1,7 @@
 'use client';
 import Link from "next/link"
 import {Button} from "@nextui-org/react";
-import { Resend } from 'resend';
 
-
-function submitEmail(email:string){
-  const resend = new Resend('re_apG2Emja_9A1ybF8ZJQjnTXgem8kDfyZZ');
-
-  resend.emails.send({
-    from: 'onboarding@resend.dev',
-    to: email,
-    subject: 'Hello World',
-    html: '<p>Congrats on sending your <strong>first email</strong>!</p>'
-  });
-}
 
 export default function SubscribeNewsletter() {
 
@@ -37,6 +25,7 @@ export default function SubscribeNewsletter() {
                     autoComplete="email"
                     placeholder="youremail@domain.com"
                     defaultValue=""
+                    required
                 />
                 <Button type="submit" color="primary" variant="solid" className="bg-blue-500 hover:bg-blue-400">Subscribe</Button>
               </form>

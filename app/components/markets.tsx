@@ -1,9 +1,8 @@
 'use client';
+
 import {Tabs, Tab, Card, CardBody, CardHeader} from "@nextui-org/react";
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useEffect, useState } from 'react'
-
-
 
 function getMarketNews() {
   const [marketNews, setMarketNews] = useState<any[]>([])
@@ -13,9 +12,6 @@ function getMarketNews() {
 
   useEffect(() => {
     const getMarketNews = async () => {
-      // This assumes you have a `todos` table in Supabase. Check out
-      // the `Create Table and seed with data` section of the README 👇
-      // https://github.com/vercel/next.js/blob/canary/examples/with-supabase/README.md
       const { data } = await supabase.from('marketnews').select()
       if (data && data.length > 0) {
         setMarketNews(data)
@@ -42,22 +38,15 @@ function getMarketNews() {
   return marketNews
 }
 
-
-
-
 interface TabProvider {
     id: string,
     label: string,
     content: string,
 }
 
-
-
-
-
 export default function MarketNews(){
     const tabs = getMarketNews() as Array<TabProvider>
-    console.log(tabs)
+
     return (
             <div className="mx-auto max-w-5xl px-6">
                 <h2 className="flex items-baseline gap-1 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-2 dark:text-white">
@@ -70,10 +59,10 @@ export default function MarketNews(){
                 <p className="text-lg leading-8 text-gray-600 dark:text-gray-300">
                     Powered by SteinPrograms
                 </p>
-                <Tabs aria-label="Dynamic tabs" items={tabs} className="grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 mt-10 sm:mt-8 sm:pt-8 lg:mx-0 lg:max-w-none lg:grid-cols-3 ">
+                <Tabs aria-label="Dynamic tabs" items={tabs} variant="underlined" radius="none" className="grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 mt-10 sm:mt-8 sm:pt-8 lg:mx-0 lg:max-w-none lg:grid-cols-3 ">
                     {(item) => (
                     <Tab key={item.id} title={item.label} className="px-0" >
-                        <Card className="dark:bg-black dark:text-white ring-1 ring-inset ring-white/10 dark:ring-white/30 mx-0">
+                        <Card className="dark:bg-black dark:text-white ring-1 ring-inset ring-white/10 dark:ring-white/30 mx-0" radius="none" >
                         <CardBody>
                             {item.content}
                         </CardBody>

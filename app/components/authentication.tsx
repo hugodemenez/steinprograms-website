@@ -1,7 +1,6 @@
 'use client';
 import React from "react";
-
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure} from "@nextui-org/react";
+import {Modal, ModalContent, ModalHeader, ModalBody, Button, useDisclosure} from "@nextui-org/react";
 
 export default function Authentication(props:{user:any}) {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
@@ -10,64 +9,42 @@ export default function Authentication(props:{user:any}) {
       <>
       {props.user?
       <form action="/auth/sign-out" method="post">
-        <Button type="submit" color="danger" variant="flat">Log Out</Button>
+        <Button type="submit" color="danger" variant="flat" radius="none">Log Out</Button>
       </form>
         :
         <>
-        <Button onPress={onOpen} color="primary" variant="flat">Login</Button>
-      <Modal backdrop="blur" isOpen={isOpen} onOpenChange={onOpenChange}>
-        <ModalContent>
+        <Button onPress={onOpen} color="primary" radius="none" variant="flat">Login</Button>
+      <Modal backdrop="blur" isOpen={isOpen} onOpenChange={onOpenChange} radius="none" className="py-4 bg-white dark:bg-gray-900">
+        <ModalContent >
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">Authentication - Sign In</ModalHeader>
+              <ModalHeader className="text-black dark:text-white">Authentication</ModalHeader>
               <ModalBody>
-              <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2">
                 <form
-                  className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
-                  action="/auth/sign-in"
+                  className="flex-1 flex  w-full  justify-center text-foreground  bg-gray-100 dark:bg-gray-800 px-2"
+                  action="/auth/sign-otp"
                   method="post"
                 >
-                <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  autoComplete="email"
-                  className="rounded-md px-4 py-2 bg-inherit border mb-6"
-                  placeholder="youremail@domain.com"
-                />
-                  <label className="text-md" htmlFor="password">
-                    Password
-                  </label>
+                  
                   <input
-                    className="rounded-md px-4 py-2 bg-inherit border mb-6"
-                    type="password"
-                    name="password"
-                    placeholder="••••••••"
-                    required
+                    type="email"
+                    name="email"
+                    id="email"
+                    autoComplete="email"
+                    className="bg-transparent  appearance-none caret-blue-500 border-none ring-focus  focus:outline-none focus:ring-0 text-left flex-1 dark:text-white"
+                    placeholder="youremail@domain.com"
                   />
-                  <button className="bg-green-700 rounded px-4 py-2 text-white mb-2">
-                    Sign In
-                  </button>
-                  <button
-                    formAction="/auth/sign-up"
-                    className="border border-gray-700 rounded px-4 py-2 text-black mb-2"
-                  >
-                    Sign Up
+                  <button>
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className=" stroke-gray-500">
+                      {isOpen?
+                      <path d="M7.75 12H16.25M16.25 12L13 15.25M16.25 12L13 8.75"></path>
+                      :
+                      <path d="M8 13L10.5 15.5L15.5 8.5" stroke="#4EBE96" ></path>
+                      }
+                    </svg>
                   </button>
                 </form>
-              </div>
               </ModalBody>
-              <ModalFooter>
-                <Button color="danger" variant="light" onPress={onClose}>
-                  Close
-                </Button>
-                {/* <Button color="primary" onPress={onClose}>
-                  Action
-                </Button> */}
-              </ModalFooter>
             </>
           )}
         </ModalContent>

@@ -1,4 +1,4 @@
-import { EmailTemplate } from '@/app/components/email-template';
+import { MagicLinkEmail } from '@/app/components/email-template';
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend';
 
@@ -11,23 +11,26 @@ export async function POST(request: Request) {
     
     try {
         const data = await resend.emails.send({
-          from: 'Acme <onboarding@resend.dev>',
+          from: 'Stein Programs <team@steinprograms.com>',
           to: email,
-          subject: 'SteinPrograms : Newsletter subscription confirmation',
-          react: EmailTemplate({ firstName: 'John' }),
+          subject: 'Newsletter subscription',
+          react: MagicLinkEmail({ loginCode: 'ldfkfd-grdftd-sfdtre' }),
           text: "",
         });
-    
-        return NextResponse.json(data);
+        
+        if (data.id){
+          return NextResponse.redirect(
+            `${requestUrl.origin}?message=You've successfully subscribed to our newsletter. Thank you !`,
+            {
+              // a 301 status is required to redirect from a POST to a GET route
+              status: 301,
+            }
+          )
+        }
+        return NextResponse.json({ data });
       } catch (error) {
         return NextResponse.json({ error });
       }
 
-  return NextResponse.redirect(
-    `${requestUrl.origin}?message=Check email to continue sign in process`,
-    {
-      // a 301 status is required to redirect from a POST to a GET route
-      status: 301,
-    }
-  )
+  
 }

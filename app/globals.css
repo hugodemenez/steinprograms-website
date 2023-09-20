@@ -50,7 +50,7 @@ body {
   transform-origin: center;
   stroke:var(--accent);
   animation: loading var(--animation-duration) ease-in-out forwards;
-  opacity: 0.5;
+  opacity: 0;
   background-size: contain;
 }
 
@@ -83,6 +83,12 @@ body {
 @keyframes thirdBar{
   0%{
       transform: translateX(200px) translateY(200px) scale(2);
+  }
+}
+
+@keyframes loading{
+  100%{
+    opacity: 1;
   }
 }
 
