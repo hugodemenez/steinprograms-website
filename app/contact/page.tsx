@@ -19,7 +19,10 @@ export default function Page() {
           Feel free to reach out, we will get back to you as soon as possible.
         </p>
       </div>
-      <form action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
+      <form
+      action="/email/contact"
+      method="post"
+      className="mx-auto mt-16 max-w-xl sm:mt-20">
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div>
             <label htmlFor="first-name" className="block text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200">
