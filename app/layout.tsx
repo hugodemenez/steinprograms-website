@@ -1,9 +1,9 @@
 import './globals.css'
 
 import { Analytics } from '@vercel/analytics/react';
-import {Providers} from "./components/providers";
-import Header from "./components/header";
-import Footer from './components/footer';
+import {Providers} from "../components/providers";
+import Header from "../components/header";
+import Footer from '../components/footer';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 
@@ -38,7 +38,9 @@ export default async function RootLayout({
       <body className="flex flex-col overflow-x-hidden min-h-screen">
         <Providers>
           <Header user={user}></Header>
+          <div className='min-h-screen'>
           {children}
+          </div>
           <Footer></Footer>
         </Providers>
       </body>

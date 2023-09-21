@@ -1,7 +1,5 @@
-import Articles from './components/articles'
-import TypeWriter from './components/typewriter'
-import SubscribeNewsletter from './components/newsletter'
-import MarketNews from './components/markets'
+import TypeWriter from '../components/typewriter'
+import MarketNews from '../components/news'
 
  
 export default async function Home() {
@@ -16,9 +14,7 @@ export default async function Home() {
                 </svg>
                 <TypeWriter text="Stein Programs"></TypeWriter>
             </div>
-            {/* <SubscribeNewsletter></SubscribeNewsletter> */}
             <MarketNews></MarketNews>
-            <Articles></Articles>
         </>
     )
 }
