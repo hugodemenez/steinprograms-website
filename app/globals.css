@@ -96,4 +96,7 @@ body {
   100%{
     opacity: 1;
   }
+  150%{
+    height:250px;
+  }
 }

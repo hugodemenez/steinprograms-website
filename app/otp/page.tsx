@@ -18,8 +18,8 @@ export default function Otp(){
                     name="email"
                     id="email"
                     autoComplete="email"
-                    className="rounded-md px-4 py-2 bg-inherit border mb-6 text-white placeholder:text-gray-200"
-                    placeholder="XXXXXX"
+                    className="rounded-md px-4 py-2 bg-inherit border mb-6 dark:text-white text-black dark:bg-white dark:border-black max-w-5xl w-fit"
+                    placeholder="if your email adress is missing, please enter it here"
                     defaultValue={email?email:""}
                 />
                 <label htmlFor="otp" className="text-black dark:text-white">Enter OTP code</label>
