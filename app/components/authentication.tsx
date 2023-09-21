@@ -21,7 +21,7 @@ export default function Authentication(props:{user:any}) {
               <ModalHeader className="text-black dark:text-white">Authentication</ModalHeader>
               <ModalBody>
                 <form
-                  className="flex-1 flex  w-full  justify-center text-foreground  bg-gray-100 dark:bg-gray-800 px-2"
+                  className="flex-1 flex  w-full  justify-center text-foreground  bg-gray-100 dark:bg-gray-800"
                   action="/auth/sign-otp"
                   method="post"
                 >

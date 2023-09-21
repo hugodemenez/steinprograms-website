@@ -14,7 +14,6 @@ export async function POST(request: Request) {
   if (token && email){
     const { data, error } = await supabase.auth.verifyOtp({ email, token, type: 'email'})
     if (error) {
-      console.log(error)
       return NextResponse.redirect(
         `${requestUrl.origin}?error=Could not authenticate user`,
         {
@@ -23,7 +22,6 @@ export async function POST(request: Request) {
         }
       )
     }
-    console.log(data)
     return NextResponse.redirect(
       `${requestUrl.origin}?message=Logged in successfully`,
       {
@@ -32,29 +30,4 @@ export async function POST(request: Request) {
       }
     )
   }
-
-  const { data, error } = await supabase.auth.signInWithOtp({
-    email: email,
-    options: {
-      emailRedirectTo: 'http://localhost:3000'
-    }
-  })
-
-  if (error) {
-    return NextResponse.redirect(
-      `${requestUrl.origin}?error=Could not authenticate user`,
-      {
-        // a 301 status is required to redirect from a POST to a GET route
-        status: 301,
-      }
-    )
-  }
-
-  return NextResponse.redirect(
-    `${requestUrl.origin}?email=${email}`,
-    {
-      // a 301 status is required to redirect from a POST to a GET route
-      status: 301,
-    }
-  )
 }

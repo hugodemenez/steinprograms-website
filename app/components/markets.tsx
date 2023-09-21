@@ -20,14 +20,9 @@ function getMarketNews() {
         setMarketNews([
             {
                 id: "1",
-                label: "Bitcoin",
-                content: "Recent news in the BTC crypto market includes upgrades to SHIB partner Welly's, analysis of BTC price using the Stock-to-Flow Model, Nomura launching an institutional Bitcoin fund, and the influence of Binance and SEC on Bitcoin price volatility. Bitcoin dominance is rising, and there are predictions for Bitcoin price in the coming years. Global investment bank Nomura is also entering the Bitcoin market. Additionally, there are reports of Elon Musk's financial plans for Twitter."
+                label: "Welcome to SteinPrograms",
+                content: "Sign up to know more about the crypto market and get the latest news."
             },
-            {
-                id: "2",
-                label: "More...",
-                content: "Sign up to know more about the crypto market and get the latest news on the crypto market."
-            }
         ])
       }
     }
@@ -59,9 +54,19 @@ export default function MarketNews(){
                 <p className="text-lg leading-8 text-gray-600 dark:text-gray-300">
                     Powered by SteinPrograms
                 </p>
-                <Tabs aria-label="Dynamic tabs" items={tabs} variant="underlined" radius="none" className="grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 mt-10 sm:mt-8 sm:pt-8 lg:mx-0 lg:max-w-none lg:grid-cols-3 ">
+                <Tabs
+                aria-label="Dynamic tabs"
+                items={tabs}
+                variant="underlined"
+                radius="none"
+                className="grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 mt-10 sm:mt-8 sm:pt-8 lg:mx-0 lg:max-w-none lg:grid-cols-3"
+                classNames={{
+                    cursor: "w-full bg-blue-500",
+                    tabContent: "group-data-[selected=true]:text-blue-500",
+                  }}
+                >
                     {(item) => (
-                    <Tab key={item.id} title={item.label} className="px-0" >
+                    <Tab key={item.id} title={item.label} className="px-0 dark:text-white " >
                         <Card className="dark:bg-black dark:text-white ring-1 ring-inset ring-white/10 dark:ring-white/30 mx-0" radius="none" >
                         <CardBody>
                             {item.content}

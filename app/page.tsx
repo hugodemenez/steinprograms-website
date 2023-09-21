@@ -8,7 +8,7 @@ export default async function Home() {
     
     return (
         <>
-            <div className='flex flex-col items-center h-[calc(100vh-4rem)] justify-center gap-4'>
+            <div className='logo-container flex flex-col items-center h-[calc(100vh-4rem)] justify-center gap-4 transition-all'>
                 <svg className="logo w-48 h-48" viewBox="0 0 151 151" fill="none">
                     <line id="firstBar" x1="61.2705" y1="-10.2658" x2="-1.62191" y2="52.6266"  strokeWidth="22.1699" strokeLinecap="square"/>
                     <path id="secondBar" d="M106.998 75.3418L43.6856 75.3418" strokeWidth="22.1699" strokeLinecap="square"/>
