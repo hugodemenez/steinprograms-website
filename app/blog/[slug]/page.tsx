@@ -1,6 +1,6 @@
 // TODO: Duplicate or move this file outside the `_examples` folder to make it a route
 
-import News from '@/components/news'
+import News from '@/components/news-section'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 

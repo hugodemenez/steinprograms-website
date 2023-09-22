@@ -10,6 +10,15 @@ export async function POST(request: Request) {
   const email = String(formData.get('email'))
   const supabase = createRouteHandlerClient({ cookies })
 
+  if(!email){
+    return NextResponse.redirect(
+      `${requestUrl.origin}?error=Please enter an email`,
+      {
+        // a 301 status is required to redirect from a POST to a GET route
+        status: 301,
+      }
+    )
+  }
 
   const { data, error } = await supabase.auth.signInWithOtp({
     email: email,

@@ -3,54 +3,17 @@ import { useEffect, useState } from 'react'
 import { Database } from '../types/supabase'
 import { cookies } from 'next/headers'
 import Score from './score'
-import { Bitcoin, CryptoLogo } from './logo'
-
-
-const posts = [
-  {
-    id: 1,
-    title: 'SteinPrograms innovation',
-    href: '#',
-    description:
-      'After years studying fundamentals of computer science and finance, we are proud to announce our first project: SteinPrograms.',
-    date: 'Sept 16, 2023',
-    datetime: '2023-09-16',
-    category: { title: 'Innovation', href: '#' },
-    author: {
-      name: 'Hugo Demenez',
-      role: 'Founder',
-      href: '#',
-      imageUrl:
-        'https://avatars.githubusercontent.com/u/71768413?v=4',
-    },
-  },
-  {
-    id: 2,
-    title: "Bitcoin's future",
-    href: '#',
-    description:
-      "Bitcoin's price is nearing the $30K level as analysts predict a potential bull market. PayPal's entry into the crypto space is seen as a game-changer. Democrats hold more crypto than Republicans, according to a survey. CoinShares CSO warns of continued uncertainty. Glassnode co-founders discuss Bitcoin's path to $30K. Analysts predict Bitcoin to reach $40K-$60K next year. Ethereum's future looks promising with a potential price of $8000. Bitcoin nodes are making progress towards instant sync.",
-    date: 'Sept 15, 2023',
-    datetime: '2023-09-15',
-    category: { title: 'Crypto', href: '#' },
-    author: {
-      name: 'SteinPrograms',
-      role: 'Bot',
-      href: '#',
-      imageUrl:
-        'logo.png',
-    },
-  },
-]
+import {CryptoLogo } from './logo'
 
 
 
 
-export default async function News(){
+
+export default async function NewsSection(){
   const supabase = createServerComponentClient<Database>({ cookies })
   const { data } = await supabase.from('marketnews').select()
     return (
-      <div className="py-24 sm:py-32 mx-auto max-w-5xl px-6">
+      <div className="py-12 sm:py-32 mx-auto max-w-5xl px-6">
           <h2 className="flex items-baseline gap-1 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-2 dark:text-white">
               Crypto News
               <span className="relative flex h-3 w-3">
