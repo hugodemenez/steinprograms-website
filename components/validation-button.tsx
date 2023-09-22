@@ -37,6 +37,7 @@ export default function ValidationButton(){
             height="32"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
+            fill={"none"}
             >
                 <motion.path
                 stroke="#4EBE96"
@@ -45,7 +46,7 @@ export default function ValidationButton(){
                 animate={isChecked ? "checked" : "unchecked"}
                 />
                 <motion.path
-                stroke="#FFFFFF"
+                className="dark:stroke-white stroke-black"
                 d="M7.75 12H16.25M16.25 12L13 15.25M16.25 12L13 8.75"
                 variants={arrowVariants}
                 animate={isChecked ? "checked" : "unchecked"}

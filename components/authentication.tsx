@@ -55,7 +55,7 @@ export default function Authentication(props:{user:any}) {
         <form action="/auth/sign-out" method="post">
           <button 
           type="submit"
-          className="rounded-none bg-red-900/50 px-3.5 py-2.5 text-sm  text-red-600 shadow-sm hover:bg-red-900/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
+          className="rounded-none bg-red-100/50  dark:bg-red-900/50 px-3.5 py-2.5 text-sm  text-red-600 shadow-sm hover:bg-red-100/30 dark:hover:bg-red-900/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
           >
             Log Out
           </button>
@@ -64,7 +64,7 @@ export default function Authentication(props:{user:any}) {
         <>
           <button 
             onClick={onOpen} 
-            className="rounded-none bg-blue-900/50 px-3.5 py-2.5 text-sm  text-blue-600 shadow-sm hover:bg-blue-900/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500">
+            className="rounded-none bg-blue-100/50 dark:bg-blue-900/50 px-3.5 py-2.5 text-sm  text-blue-600 shadow-sm hover:bg-blue-200/50 dark:hover:bg-blue-900/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500">
             Login
           </button>
           <Modal backdrop="blur" isOpen={isOpen} onOpenChange={onOpenChange} radius="none" className="py-4 bg-white dark:bg-gray-900">
