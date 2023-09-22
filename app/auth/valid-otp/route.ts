@@ -30,4 +30,11 @@ export async function POST(request: Request) {
       }
     )
   }
+  return NextResponse.redirect(
+    `${requestUrl.origin}?message=You forgot to enter your OTP, try again`,
+    {
+      // a 301 status is required to redirect from a POST to a GET route
+      status: 301,
+    }
+  )
 }

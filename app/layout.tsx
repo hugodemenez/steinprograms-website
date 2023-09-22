@@ -13,6 +13,7 @@ export const metadata = {
   description: 'Official website of SteinPrograms',
 }
 
+export const dynamic = 'force-dynamic'
 
 async function getUser(){
   'use server';

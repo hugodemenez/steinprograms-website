@@ -22,11 +22,13 @@ export default function ValidationButton(){
                 const form = e.currentTarget.form;
                 e.preventDefault();
                 setIsChecked(!isChecked);
-                setTimeout(() => {
+                new Promise((resolve) =>
+                    setTimeout(() => {
                         if (form) {
-                            form.submit();
+                            resolve(form.submit())
                         }
-                    }, 1000);
+                    }, 1000)
+                )
                 }
                 
             }>
