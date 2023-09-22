@@ -1,16 +1,17 @@
 import './globals.css'
 
-import { Analytics } from '@vercel/analytics/react';
-import {Providers} from "../components/providers";
-import Header from "../components/header";
-import Footer from '../components/footer';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
+import { Analytics } from '@vercel/analytics/react';
+import {Providers} from "@/components/providers";
+import Header from "@/components/header";
+import Footer from '@/components/footer';
+import Messages from '@/components/messages';
 
 
 export const metadata = {
   title: 'SteinPrograms',
-  description: 'Official website of SteinPrograms',
+  description: 'Next generation crypto trading tools',
 }
 
 export const dynamic = 'force-dynamic'
@@ -18,10 +19,11 @@ export const dynamic = 'force-dynamic'
 async function getUser(){
   'use server';
   const supabase = createServerComponentClient({ cookies })
-
+  
   const {
     data: { user },
   } = await supabase.auth.getUser()
+
 
   return user;
 }
@@ -36,7 +38,7 @@ export default async function RootLayout({
   
   return (
     <html lang="en">
-      <body className="flex flex-col overflow-x-hidden min-h-screen">
+      <body className="flex flex-col overflow-x-hidden min-h-screen bg-white dark:bg-black">
         <Providers>
           <Header user={user}></Header>
           <div className='min-h-screen'>

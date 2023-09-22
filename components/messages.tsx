@@ -1,15 +1,10 @@
 'use client'
-
 import { useSearchParams } from 'next/navigation'
-import {Modal, ModalContent, ModalHeader, ModalBody, Button, useDisclosure} from "@nextui-org/react";
-
 
 export default function Messages() {
-  const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const searchParams = useSearchParams()
   const error = searchParams.get('error')
   const message = searchParams.get('message')
-
 
   return (
     <>

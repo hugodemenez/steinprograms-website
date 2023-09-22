@@ -17,9 +17,6 @@
   --accent: #0f0d1f;
 }
 
-.logo{
-  background-image:url("../public/cutting-dark.png"); 
-}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -30,17 +27,11 @@
     --accent: #cecece;
   }
 
-  .logo{
-    background-image:url("../public/cutting-light.png"); 
-  }
 }
 
 
 
 
-body {
-  background: var(--background);
-}
 
 .blinker{
   color:var(--text);
@@ -94,6 +85,37 @@ body {
 
 @keyframes loading{
   100%{
+    opacity: 1;
+  }
+}
+
+.animate-appear{
+  animation: appear 1s ease-in-out forwards;
+  transform:translateY(-10px);
+}
+.animate-appear-1{
+  opacity: 0;
+  animation: appear 1s 0.5s ease-in-out forwards;
+}
+.animate-appear-2{
+  opacity: 0;
+  animation: appear 1s 1s ease-in-out forwards;
+}
+.animate-appear-3{
+  opacity: 0;
+  animation: appear 1s 1.5s ease-in-out forwards;
+}
+.animate-appear-4{
+  opacity: 0;
+  animation: appear 1s 4s ease-in-out forwards;
+}
+
+@keyframes appear{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    transform:translateY(0);
     opacity: 1;
   }
 }
