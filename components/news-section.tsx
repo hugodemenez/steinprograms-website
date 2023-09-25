@@ -8,7 +8,7 @@ import Link from 'next/link'
 export default async function NewsSection(){
 
   const supabase = createServerComponentClient<Database>({ cookies })
-  const { data } = await supabase.from('marketnews').select()
+  const { data } = await supabase.from('marketnews').select().order('created_at', { ascending: false })
 
     return (
       <div className="py-4 sm:py-8 mx-auto max-w-5xl px-6">

@@ -14,7 +14,9 @@ export default async function Blog({ params }: { params: any }) {
     const { data: marketnews } = await supabase
       .from("marketnews")
       .select("*")
-      .eq("label", params.slug);
+      .eq("label", params.slug)
+      .order('created_at', { ascending: false })
+      ;
     return (
       <>
         <div className="mx-auto max-w-5xl px-6 divide-y gap-8">
@@ -40,7 +42,8 @@ export default async function Blog({ params }: { params: any }) {
     const { data: marketnews } = await supabase
       .from("marketnews")
       .select("*")
-      .eq("id", params.slug);
+      .eq("id", params.slug)
+      ;
     return (
       <>
         <div className="py-4 sm:py-8 mx-auto max-w-5xl px-6">
