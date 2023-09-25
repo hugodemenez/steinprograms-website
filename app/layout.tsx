@@ -44,6 +44,7 @@ export default async function RootLayout({
           <div className='min-h-screen'>
           {children}
           </div>
+          <Messages></Messages>
           <Footer></Footer>
         </Providers>
       </body>

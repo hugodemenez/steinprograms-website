@@ -10,9 +10,15 @@ export default async function Blog({ params }: { params: any }) {
   // fetch database with blog content using : params.slug as identifier
   const supabase = createServerComponentClient({ cookies });
 
+  const {data:user} = await supabase.auth.getUser();
+  var database = "marketnews"
+  if (!user.user) {
+    database = "marketnews_free"
+  }
+
   if (params.slug.length < 5) {
     const { data: marketnews } = await supabase
-      .from("marketnews")
+      .from(database)
       .select("*")
       .eq("label", params.slug)
       .order('created_at', { ascending: false })
@@ -40,7 +46,7 @@ export default async function Blog({ params }: { params: any }) {
     );
   } else {
     const { data: marketnews } = await supabase
-      .from("marketnews")
+      .from(database)
       .select("*")
       .eq("id", params.slug)
       ;

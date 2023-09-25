@@ -36,36 +36,32 @@ export interface Database {
         }
         Relationships: []
       }
-      todos: {
+      marketnews_free: {
         Row: {
+          content: string | null
           created_at: string
           id: string
-          is_complete: boolean | null
+          label: "BTC" | "ETH" | "XRP" | null
+          score: number | null
           title: string | null
-          user_id: string | null
         }
         Insert: {
+          content?: string | null
           created_at?: string
           id?: string
-          is_complete?: boolean | null
+          label?: string | null
+          score?: number | null
           title?: string | null
-          user_id?: string | null
         }
         Update: {
+          content?: string | null
           created_at?: string
           id?: string
-          is_complete?: boolean | null
+          label?: string | null
+          score?: number | null
           title?: string | null
-          user_id?: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "todos_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
+        Relationships: []
       }
     }
     Views: {
