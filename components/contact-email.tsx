@@ -18,7 +18,7 @@ interface ContactEmailProps {
   email?: string;
 }
 
-export const ContactEmail = ({
+export const ContactEmailClient = ({
     message,
     firstName,
     lastName,
@@ -27,43 +27,12 @@ export const ContactEmail = ({
 }: ContactEmailProps) => (
   <Html>
     <Head />
-    <Preview>Log in with this magic link</Preview>
+    <Preview>Contact summary</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Heading style={h1}>Hey, we've received your message</Heading>
-        <Link
-          href="https://steinprograms.com"
-          target="_blank"
-          style={{
-            ...link,
-            display: 'block',
-            marginBottom: '16px',
-          }}
-        >
-          Click here to log in with this magic link
-        </Link>
+        <Heading style={h1}>Hey {firstName}, we've received your message</Heading>
         <Text style={{ ...text, marginBottom: '14px' }}>
           {message}
-        </Text>
-        <code style={code}>{phoneNumber}</code>
-        <Text
-          style={{
-            ...text,
-            color: '#ababab',
-            marginTop: '14px',
-            marginBottom: '16px',
-          }}
-        >
-          If you didn&apos;t try to login, you can safely ignore this email.
-        </Text>
-        <Text
-          style={{
-            ...text,
-            color: '#ababab',
-            marginTop: '12px',
-            marginBottom: '38px',
-          }}
-        >
         </Text>
         <Text style={footer}>
           <Link
@@ -73,16 +42,52 @@ export const ContactEmail = ({
           >
             steinprograms.com
           </Link>
-          , the all-in-one-workspace
+          , algorithms
           <br />
-          to keep track of recent news
+          to keep track of news
         </Text>
       </Container>
     </Body>
   </Html>
 );
 
-export default ContactEmail;
+
+export const ContactEmailTeam = ({
+  message,
+  firstName,
+  lastName,
+  phoneNumber,
+  email
+}: ContactEmailProps) => (
+<Html>
+  <Head />
+  <Preview>Message received from website</Preview>
+  <Body style={main}>
+    <Container style={container}>
+      <Heading style={h1}>{firstName} {lastName} sent a message !</Heading>
+      <Text style={{ ...text, marginBottom: '14px' }}>
+        {message}
+      </Text>
+      <Link
+          href={`mailto:${email}`}
+          target="_blank"
+          style={{
+            ...link,
+            display: 'block',
+            marginBottom: '16px',
+          }}
+        >
+          Click here to answer
+        </Link>
+      <Text style={footer}>
+        or call {phoneNumber}
+      </Text>
+
+    </Container>
+  </Body>
+</Html>
+);
+
 
 const main = {
   backgroundColor: '#ffffff',

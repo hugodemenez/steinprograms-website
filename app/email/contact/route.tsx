@@ -1,4 +1,4 @@
-import ContactEmail from '@/components/contact-email';
+import { ContactEmailClient, ContactEmailTeam } from '@/components/contact-email';
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend';
 
@@ -13,12 +13,30 @@ export async function POST(request: Request) {
     const phoneNumber = String(formData.get('phone-number'))
     const message = String(formData.get('message'))
     
+
+    try{
+      // Send message to team inbox
+      if (process.env.TEAM_EMAIL){
+        const teamSummary = await resend.emails.send({
+          from: `Stein Programs <${process.env.CONTACT_EMAIL}>`,
+          to: process.env.TEAM_EMAIL,
+          subject: 'Contact from Stein Programs',
+          react: ContactEmailTeam({ message, firstName, lastName, phoneNumber, email }),
+          text: "",
+        });
+      }
+
+  } catch (error) {
+    return NextResponse.json({ error });
+  }
+
     try {
+      // Send a summary email to the user
         const data = await resend.emails.send({
-          from: 'Stein Programs <team@steinprograms.com>',
+          from: `Stein Programs <${process.env.TEAM_EMAIL}>`,
           to: email,
           subject: 'Contact from Stein Programs',
-          react: ContactEmail({ message, firstName, lastName, phoneNumber, email }),
+          react: ContactEmailClient({ message, firstName, lastName, phoneNumber, email }),
           text: "",
         });
         
