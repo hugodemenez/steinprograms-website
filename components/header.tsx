@@ -1,5 +1,4 @@
 'use client';
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem} from "@nextui-org/react";
 import SteinProgramsLogo from "./logo";
 import Authentication from "./authentication";
 import Messages from "./messages";
@@ -7,18 +6,15 @@ import Messages from "./messages";
 
 export default function Header(props:{user:any}) {
     return (
-        <Navbar className="dark:bg-transparent">
-            <NavbarBrand>
+        <nav className="w-full flex dark:bg-transparent justify-between sticky top-0 py-4 backdrop-blur-md  z-10 px-6">
+            <div>
                 <SteinProgramsLogo></SteinProgramsLogo>
-            </NavbarBrand>
+            </div>
             
-            <NavbarContent justify="end">
-                <NavbarItem >
+            <div className="flex-end">
                     <Authentication user={props.user}></Authentication>
-                    
                     <Messages></Messages>
-                </NavbarItem>
-            </NavbarContent>
-        </Navbar>
+            </div>
+        </nav>
     );
     }

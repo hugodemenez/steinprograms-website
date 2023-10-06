@@ -37,8 +37,8 @@ export default async function RootLayout({
   const user = await getUser();
   
   return (
-    <html lang="en">
-      <body className="flex flex-col overflow-x-hidden min-h-screen bg-white dark:bg-black">
+    <html lang="en" className='bg-white dark:bg-black'>
+      <body className="flex flex-col  overflow-x-hidden min-h-screen  max-w-5xl mx-auto">
         <Providers>
           <Header user={user}></Header>
           <div className='min-h-screen'>

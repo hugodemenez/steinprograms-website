@@ -14,7 +14,7 @@ export default async function NewsSection(){
     const { data } = await supabase.from('marketnews_free').select().order('created_at', { ascending: false })
 
     return(
-      <div className="py-4 sm:py-8 mx-auto max-w-5xl px-6">
+      <div className="py-4 sm:py-8 px-6">
           <h2 className="flex items-baseline gap-1 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-2 dark:text-white">
               Crypto News
               <span className="relative flex h-3 w-3">
@@ -60,7 +60,7 @@ export default async function NewsSection(){
 
   const { data } = await supabase.from('marketnews').select().order('created_at', { ascending: false })
     return (
-      <div className="py-4 sm:py-8 mx-auto max-w-5xl px-6">
+      <div className="py-4 sm:py-8 px-6">
           <h2 className="flex items-baseline gap-1 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-2 dark:text-white">
               Crypto News
               <span className="relative flex h-3 w-3">

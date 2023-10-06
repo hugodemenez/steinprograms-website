@@ -20,7 +20,7 @@ export async function POST(request: Request) {
         const teamSummary = await resend.emails.send({
           from: `Stein Programs <${process.env.CONTACT_EMAIL}>`,
           to: process.env.TEAM_EMAIL,
-          subject: 'Contact from Stein Programs',
+          subject: 'Contact from website',
           react: ContactEmailTeam({ message, firstName, lastName, phoneNumber, email }),
           text: "",
         });
@@ -35,7 +35,7 @@ export async function POST(request: Request) {
         const data = await resend.emails.send({
           from: `Stein Programs <${process.env.TEAM_EMAIL}>`,
           to: email,
-          subject: 'Contact from Stein Programs',
+          subject: 'Summary of your contact',
           react: ContactEmailClient({ message, firstName, lastName, phoneNumber, email }),
           text: "",
         });
