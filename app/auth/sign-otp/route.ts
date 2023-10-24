@@ -19,7 +19,8 @@ export async function POST(request: Request) {
       }
     )
   }
-
+  
+  // Redirects the user to OTP modal form
   const { data, error } = await supabase.auth.signInWithOtp({
     email: email,
     options: {

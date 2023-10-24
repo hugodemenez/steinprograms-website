@@ -10,7 +10,8 @@ export async function POST(request: Request) {
   const email = String(formData.get('email'))
   const token = String(formData.get('otp'))
   const supabase = createRouteHandlerClient({ cookies })
-
+  
+  // If the form has been submitted from OTP one
   if (token && email){
     const { data, error } = await supabase.auth.verifyOtp({ email, token, type: 'email'})
     if (error) {
