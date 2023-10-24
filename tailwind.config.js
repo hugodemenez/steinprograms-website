@@ -13,5 +13,5 @@ module.exports = {
   theme: {
     extend:{}
   },
-  plugins: [nextui(),require("tailwindcss-animate")],
+  plugins: [nextui()],
 }
