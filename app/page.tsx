@@ -33,7 +33,7 @@ export default async function Home() {
             </div>
             <section id="how" className='dark:text-white'>
                 <h1 className='font-semibold text-3xl pt-8 pb-4 border-b-1 mb-4 border-gray-600'>How is it working ?</h1>
-                <p className=' leading-6 text-gray-300'>
+                <p className=' leading-6 dark:text-gray-300 text-gray-900'>
                     <ul className=''>
                         <li>
                             <h1 className='font-semibold pt-6 text-xl'>Step 1: Comprehensive Data Gathering</h1>
@@ -56,7 +56,7 @@ export default async function Home() {
             </section>
             <section id="why"className='dark:text-white'>
                 <h1 className='font-semibold text-3xl pt-8 pb-4 border-b-1 mb-4 border-gray-600'>Why Choose Us:</h1>
-                <p className=' leading-6 text-gray-300'>
+                <p className=' leading-6 dark:text-gray-300 text-gray-900'>
                     <ul className=''>
                         <li>
                             <h1 className='font-semibold pt-6 text-xl'>Accuracy: </h1>
