@@ -1,13 +1,10 @@
-
 import Link from 'next/link'
-import Script from 'next/script'
-
 
 export default async function Home() {
     return (
         <div className=" py-36 sm:py-20 lg:py-24 px-6">
             <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-                <div className="animate-appear-2 relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:text-gray-300 dark:ring-gray-600 dark:hover:ring-gray-700">
+                <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:text-gray-300 dark:ring-gray-600 dark:hover:ring-gray-700">
                     Announcing our next roadmap for 2024.{' '}
                     <Link href="/roadmap" className="font-semibold text-blue-500">
                         <span className="absolute inset-0" aria-hidden="true" />
@@ -16,13 +13,13 @@ export default async function Home() {
                 </div>
             </div>
             <div className="text-center">
-                <h1 className="animate-appear text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-gray-300">
+                <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-gray-300">
                     Unlocking the Secrets of Cryptocurrency Markets
                 </h1>
-                <p className="animate-appear-1 mt-6 text-lg leading-8 text-gray-600 dark:text-gray-500">
+                <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-500">
                     Welcome to the future of cryptocurrency investment and decision-making. In an era where information is power, our cutting-edge algorithm brings you a strategic advantage like never before. 
                 </p>
-                <div className="animate-appear-2 mt-10 flex items-center justify-center gap-x-6">
+                <div className="mt-10 flex items-center justify-center gap-x-6">
                     <Link
                     href="/news"
                     className="rounded-none bg-blue-100/50 dark:bg-blue-900/50 px-3.5 py-2.5 text-sm  text-blue-600 shadow-sm hover:bg-blue-200/50 dark:hover:bg-blue-900/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
@@ -77,7 +74,6 @@ export default async function Home() {
                     </ul>
                 </p>
             </section>
-
         </div>
     )
 }
