@@ -1,11 +1,10 @@
 "use client";
-import React from "react";
-
 import {Progress} from "@nextui-org/react";
 
 export default function Score({ score }:{score:number}) {
   return (
     <Progress
+        aria-label="Positivity score"
         label="Positivity Score"
         size="sm"
         value={score}
