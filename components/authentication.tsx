@@ -23,6 +23,8 @@ export default function Authentication(props:{user:any}) {
   const [token, setToken] = useState('');
   const [sent, setSent] = React.useState(false)
   const [loading, setLoading] = React.useState(false)
+  const [logoutLoader, setLogoutLoader] = React.useState(false)
+
   // If there is a user, display log out button
   if(props.user){
     return(
@@ -31,16 +33,25 @@ export default function Authentication(props:{user:any}) {
           className="rounded-none bg-red-100/50  dark:bg-red-900/50 px-3.5 py-2.5 text-sm  text-red-600 shadow-sm hover:bg-red-100/30 dark:hover:bg-red-900/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
           onClick={
             async ()=>{
-              toast("Logging out")
+              setLogoutLoader(true)
               await logout()
               setEmail('')
               setToken('')
               setSent(false)
               setLoading(false)
+              setLogoutLoader(false)
+              toast("Logged out")
             }
           }
         >
-          Log Out
+          {logoutLoader?
+          <>
+          <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+              Logging out
+          </>
+          :
+          "Disconnect"
+          }
         </Button>
     )
   }
