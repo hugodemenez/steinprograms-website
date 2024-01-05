@@ -1,131 +1,76 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
-@import url('https://fonts.googleapis.com/css2?family=Inter');
-
-/* Light theme css */
-:root {
-  --animation-duration : 3s;
-  --animation-velocity : 1s;
-
-  --text: #030706;
-  --background: #ffffff;
-  --primary-button: #2a6051;
-  --secondary-button: #e8e6f4;
-  --accent: #0f0d1f;
-}
-
-
-@media (prefers-color-scheme: dark) {
+ 
+@layer base {
   :root {
-    --text: #f5f7f3;
-    --background: #000000;
-    --primary-button: #8fb38f;
-    --secondary-button: #1b1b27;
-    --accent: #cecece;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+ 
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+ 
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+ 
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+ 
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+ 
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+ 
+    --radius: 0.5rem;
   }
-
-}
-
-
-
-
-
-.blinker{
-  color:var(--text);
-}
-
-.logo{
-  stroke:var(--accent);
-}
-
-
-.logo#firstBar{
-  animation: firstBar var(--animation-velocity) ease-in-out ;
-}
-
-.logo#secondBar{
-  animation: secondBar var(--animation-velocity) ease-in-out ;
-}
-
-.logo#thirdBar{
-  animation: thirdBar var(--animation-velocity) ease-in-out;
-}
-
-@keyframes firstBar{
-  0%{
-      transform: translateX(-200px) translateY(-200px) scale(3);
-  }
-}
-
-
-@keyframes secondBar{
-  0%{
-      transform:  translateY(400px) scale(3);
-  }
-}
-
-@keyframes thirdBar{
-  0%{
-      transform: translateX(200px) translateY(200px) scale(2);
-  }
-}
-
-@keyframes loading{
-  100%{
-    opacity: 1;
-  }
-}
-
-@keyframes loading{
-  100%{
-    opacity: 1;
+ 
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+ 
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+ 
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+ 
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+ 
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+ 
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+ 
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+ 
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
   }
 }
-
-.animate-appear{
-  animation: appear 0.5s ease-in-out forwards;
-  transform:translateY(-10px);
-}
-.animate-appear-1{
-  opacity: 0;
-  animation: appear 0.5s 0.5s ease-in-out forwards;
-}
-.animate-appear-2{
-  opacity: 0;
-  animation: appear 0.5s 1s ease-in-out forwards;
-}
-.animate-appear-3{
-  opacity: 0;
-  animation: appear 0.5s 1.5s ease-in-out forwards;
-}
-.animate-appear-4{
-  opacity: 0;
-  animation: appear 0.5s 4s ease-in-out forwards;
-}
-
-@keyframes appear{
-  0%{
-    opacity: 0;
+ 
+@layer base {
+  * {
+    @apply border-border;
   }
-  100%{
-    transform:translateY(0);
-    opacity: 1;
-  }
-}
-
-
-.alert{
-  animation: disappear 1s 1.5s ease-in-out forwards;
-}
-
-@keyframes disappear{
-  50%,100%{
-    opacity: 0;
-  }
-  100%{
-    visibility: hidden;
+  body {
+    @apply bg-background text-foreground;
   }
 }

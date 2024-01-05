@@ -1,7 +1,7 @@
 'use client'
 import { useSearchParams } from 'next/navigation'
 
-export default function Messages() {
+export default function Notifications() {
   const searchParams = useSearchParams()
   const error = searchParams.get('error')
   const message = searchParams.get('message')

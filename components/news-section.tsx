@@ -1,7 +1,7 @@
 import { createClientComponentClient, createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { Database } from '../types/supabase'
-import {CryptoLogo } from './logo'
+import {CryptoLogo } from '../components/crypto-logos'
 import Score from './score'
 import Link from 'next/link'
 

@@ -1,0 +1,75 @@
+/* Light theme css */
+:root {
+    --animation-duration : 3s;
+    --animation-velocity : 1s;
+  
+    --text: #030706;
+    --background: #ffffff;
+    --primary-button: #2a6051;
+    --secondary-button: #e8e6f4;
+    --accent: #0f0d1f;
+}
+
+.logo{
+    background-image:url("../public/cutting-dark.png"); 
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text: #f5f7f3;
+        --background: #000000;
+        --primary-button: #8fb38f;
+        --secondary-button: #1b1b27;
+        --accent: #cecece;
+    }
+
+    .logo{
+        background-image:url("../public/cutting-light.png"); 
+    }
+}
+
+.logo{
+    transform-origin: center;
+    stroke:var(--accent);
+    animation: loading var(--animation-duration) ease-in-out forwards;
+    opacity: 0.5;
+    background-size: contain;
+}
+
+
+.firstBar{
+    animation: firstBar var(--animation-velocity) ease-in-out ;
+}
+
+.secondBar{
+    animation: secondBar var(--animation-velocity) ease-in-out ;
+}
+
+.thirdBar{
+    animation: thirdBar var(--animation-velocity) ease-in-out;
+}
+
+@keyframes firstBar{
+    0%{
+        transform: translateX(-200px) translateY(-200px) scale(3);
+    }
+}
+
+
+@keyframes secondBar{
+    0%{
+        transform:  translateY(400px) scale(3);
+    }
+}
+
+@keyframes thirdBar{
+    0%{
+        transform: translateX(200px) translateY(200px) scale(2);
+    }
+}
+
+@keyframes loading{
+    100%{
+        opacity: 1;
+    }
+}
