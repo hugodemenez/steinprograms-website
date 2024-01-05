@@ -14,11 +14,14 @@ import {
 } from "@/components/ui/drawer"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { toast } from "sonner";
 
 export default function Authentication(props:{user:any}) {
   const searchParams = useSearchParams()
   const email = searchParams.get('email')
-  console.log(email)
+
+  // If we have the email param
+  // It means we are asking for OTP
   if(email){
     return(
     <Drawer open dismissible={false}>
@@ -64,20 +67,21 @@ export default function Authentication(props:{user:any}) {
     </Drawer>
     )
   }
-  // If we have the email param
-  // It means we are asking for OTP
+
   if(props.user){
     return(
       <form action="/auth/sign-out" method="post">
         <button 
           type="submit"
           className="rounded-none bg-red-100/50  dark:bg-red-900/50 px-3.5 py-2.5 text-sm  text-red-600 shadow-sm hover:bg-red-100/30 dark:hover:bg-red-900/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
+          onClick={()=>toast("Logging out")}
         >
           Log Out
         </button>
       </form>
     )
   }
+
   return(
     <Drawer>
       <DrawerTrigger
