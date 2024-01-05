@@ -5,6 +5,7 @@ import {Providers} from "@/components/providers";
 import Header from "@/components/header";
 import Footer from '@/components/footer';
 import Notifications from '@/components/notifications';
+import { Toaster } from "@/components/ui/sonner"
 
 export const metadata = {
   title: 'SteinPrograms',
@@ -25,6 +26,7 @@ export default async function RootLayout({
           <div className='min-h-screen'>
           {children}
           </div>
+          <Toaster></Toaster>
           <Notifications></Notifications>
           <Footer></Footer>
         </Providers>

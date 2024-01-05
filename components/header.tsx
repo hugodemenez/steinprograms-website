@@ -17,7 +17,6 @@ export default async function Header() {
             </div>
             
             <div className="flex-end">
-                    <Notifications></Notifications>
                     <Authentication user={user.user}></Authentication>
             </div>
         </nav>
