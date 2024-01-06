@@ -25,6 +25,12 @@ export default function Authentication(props:{user:any}) {
   const [loading, setLoading] = React.useState(false)
   const [logoutLoader, setLogoutLoader] = React.useState(false)
 
+  function resetAuth(){
+    setEmail('')
+    setToken('')
+    setSent(false)
+    setLoading(false)
+  }
   // If there is a user, display log out button
   if(props.user){
     return(
@@ -35,10 +41,7 @@ export default function Authentication(props:{user:any}) {
             async ()=>{
               setLogoutLoader(true)
               await logout()
-              setEmail('')
-              setToken('')
-              setSent(false)
-              setLoading(false)
+              resetAuth()
               setLogoutLoader(false)
               toast("Logged out")
             }
@@ -56,6 +59,7 @@ export default function Authentication(props:{user:any}) {
     )
   }
 
+  // If there is no user, display login button and modal
   return(
     <Drawer>
       <DrawerTrigger
@@ -66,9 +70,11 @@ export default function Authentication(props:{user:any}) {
       <DrawerContent>
         <DrawerHeader>
           <DrawerTitle>Authentication</DrawerTitle>
-          <DrawerDescription>Please enter a valid email address</DrawerDescription>
+          <DrawerDescription>{!sent?"Please enter a valid email address":"Please enter OTP we've sent to "+email}</DrawerDescription>
         </DrawerHeader>
         <div className="flex gap-4 flex-col max-w-sm mx-auto">
+          {!sent?
+          <>
           <Input
             className="text-lg"
             type="email"
@@ -77,13 +83,12 @@ export default function Authentication(props:{user:any}) {
             autoComplete="email"
             disabled={sent}
             placeholder="youremail@domain.com"
+            value={email}
             onChange={
               //Update email var
               (e) => setEmail(e.target.value)
             }
           />
-          {!sent?
-          <>
           {loading?
             <Button disabled>
               <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
@@ -105,7 +110,12 @@ export default function Authentication(props:{user:any}) {
           <>
           <Input
           className="text-lg" 
-          placeholder="Enter your OTP"
+          type="tel"
+          value={token}
+          name="password"
+          id="OTP"
+          autoComplete="one-time-code"
+          placeholder="enter your code"
           onChange={
               //Update email var
               (e) => setToken(e.target.value)
@@ -122,8 +132,8 @@ export default function Authentication(props:{user:any}) {
               setLoading(true)
               const response = await validateOTP(email,token);
               setLoading(false)
-              response.errorMessage?toast(response.errorMessage):setSent(true)
-              toast("Logged in")
+              response.errorMessage?toast(response.errorMessage):()=>{setSent(true);toast("Logged in");}
+              
             }}>
             Submit
           </Button>
@@ -133,7 +143,7 @@ export default function Authentication(props:{user:any}) {
         </div>
         <DrawerFooter>
           <DrawerClose>
-            <Button variant="outline">Cancel</Button>
+            <Button variant="outline" onClick={()=>resetAuth()}>Cancel</Button>
           </DrawerClose>
         </DrawerFooter>
       </DrawerContent>
