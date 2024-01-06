@@ -19,7 +19,7 @@ export default async function RootLayout({
 }) {
 
   return (
-    <html lang="en" >
+    <html lang="en" className='dark:bg-black' >
       <body className="flex flex-col  overflow-x-hidden min-h-screen  max-w-5xl mx-auto dark:bg-black">
         <Providers>
           <Header></Header>
