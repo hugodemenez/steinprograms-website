@@ -1,6 +1,6 @@
 'use client';
 
-export function CryptoLogo({name}:{name:"BTC"|"XRP"|"ETH"|null}){
+export function CryptoLogo({name}:{name:string|null}){
   switch(name){
     case "BTC":
       return <Bitcoin></Bitcoin>
