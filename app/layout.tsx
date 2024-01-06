@@ -19,8 +19,8 @@ export default async function RootLayout({
 }) {
 
   return (
-    <html lang="en" className='dark:bg-black' >
-      <body className="flex flex-col  overflow-x-hidden min-h-screen  max-w-5xl mx-auto dark:bg-black">
+    <html lang="en" className='dark:dark' >
+      <body className="flex flex-col  overflow-x-hidden min-h-screen  max-w-5xl mx-auto dark:dark">
         <Providers>
           <Header></Header>
           <div className='min-h-screen'>
