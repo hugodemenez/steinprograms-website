@@ -1,7 +1,7 @@
 import './globals.css'
 
 import { Analytics } from '@vercel/analytics/react';
-import {Providers} from "@/components/providers";
+import { Providers } from "@/components/providers";
 import Header from "@/components/header";
 import Footer from '@/components/footer';
 import Notifications from '@/components/notifications';
@@ -24,11 +24,10 @@ export default async function RootLayout({
         <Providers>
           <Header></Header>
           <div className='min-h-screen'>
-
-          {children}
+            {children}
           </div>
           <Notifications></Notifications>
-          <Toaster/>
+          <Toaster />
           <Footer></Footer>
         </Providers>
       </body>

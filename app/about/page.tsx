@@ -1,7 +1,5 @@
-
-
-export default function About(){
-    return(
+export default function About() {
+    return (
         <div className="py-6 lg:py-24 px-6">
             <section id="how" className='dark:text-white'>
                 <h1 className='font-semibold text-3xl pt-8 pb-4 border-b-1 mb-4 border-gray-600'>How is it working ?</h1>
@@ -9,7 +7,7 @@ export default function About(){
                     <ul>
                         <li>
                             <h1 className='font-semibold pt-6 text-xl'>Step 1: Comprehensive Data Gathering</h1>
-                            Our algorithm scours the vast landscape of the internet, meticulously gathering news and insights from diverse, reliable sources. We leave no stone unturned, ensuring you have access to the latest developments in the cryptocurrency world. 
+                            Our algorithm scours the vast landscape of the internet, meticulously gathering news and insights from diverse, reliable sources. We leave no stone unturned, ensuring you have access to the latest developments in the cryptocurrency world.
                         </li>
                         <li>
                             <h1 className='font-semibold pt-6 text-xl'>Step 2: Analyzing Market Influence</h1>
