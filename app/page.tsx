@@ -77,7 +77,7 @@ export default async function Home() {
                             March 2024
                         </time>
                         <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                           Machine Learning Trading 
+                            Machine Learning Trading
                         </h3>
                         <p className="text-base font-normal text-gray-500 dark:text-gray-400">
                             As first version of our algorithm will be ready, we will start to train it with machine learning to improve its performance.

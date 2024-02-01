@@ -1,8 +1,7 @@
 import Authentication from "./authentication";
 import SteinProgramsLogo from "./logo/layout";
-import Notifications from "./notifications";
 import { Database } from '../types/supabase'
-import { createClientComponentClient, createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 
 
