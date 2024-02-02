@@ -21,7 +21,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "framer-motion": "^10.17.9",
-    "next": "canary",
+    "next": "latest",
     "next-themes": "^0.2.1",
     "postcss": "^8.4.31",
     "react": "18.2.0",
