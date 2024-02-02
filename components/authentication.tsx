@@ -33,11 +33,15 @@ export default function Authentication(props: { user: any }) {
   const [loading, setLoading] = React.useState(false)
   const [logoutLoader, setLogoutLoader] = React.useState(false)
 
+  const [open, setOpen] = React.useState(false)
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+
   function resetAuth() {
     setEmail('')
     setToken('')
     setSent(false)
     setLoading(false)
+    setOpen(false)
   }
   // If there is a user, display log out button
   if (props.user) {
@@ -51,7 +55,6 @@ export default function Authentication(props: { user: any }) {
             await logout()
             resetAuth()
             setLogoutLoader(false)
-            toast("Logged out")
           }
         }
       >
@@ -69,8 +72,6 @@ export default function Authentication(props: { user: any }) {
 
   // If there is no user, display login button
   // Either drawer or modal depending on screen size
-  const [open, setOpen] = React.useState(false)
-  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   if (isDesktop) {
     return (
