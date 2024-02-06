@@ -19,10 +19,10 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className='dark:dark bg-background grid grid-cols-[1fr_minmax(232px,1024px)_1fr]' >
-      <body className="col-start-2 m-0 flex flex-col  overflow-x-hidden min-h-screen  max-w-5xl dark:dark">
+      <body className="col-start-2 m-0 flex flex-col  overflow-x-hidden min-h-screen  max-w-5xl dark:dark scroll-smooth">
         <Providers>
           <Header></Header>
-          <div className='min-h-screen'>
+          <div className='min-h-screen '>
             {children}
           </div>
           <Toaster />

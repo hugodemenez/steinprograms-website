@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input"
 import { toast } from "sonner";
 import { sendOTP, validateOTP } from "./server/otp";
 import { ReloadIcon } from "@radix-ui/react-icons"
-import { logout } from "./server/user";
+import { getUser, logout } from "./server/user";
 import {
   Dialog,
   DialogContent,
@@ -26,14 +26,14 @@ import {
 } from "@/components/ui/dialog"
 import { useMediaQuery } from "@/hooks/use-media-query";
 
-export default function Authentication(props: { user: any }) {
+export default function AuthenticationButton(props: { user: any }) {
   const [email, setEmail] = useState('');
   const [token, setToken] = useState('');
   const [sent, setSent] = React.useState(false)
   const [loading, setLoading] = React.useState(false)
   const [logoutLoader, setLogoutLoader] = React.useState(false)
-
   const [open, setOpen] = React.useState(false)
+
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   function resetAuth() {
@@ -43,6 +43,7 @@ export default function Authentication(props: { user: any }) {
     setLoading(false)
     setOpen(false)
   }
+
   // If there is a user, display log out button
   if (props.user) {
     return (
@@ -78,10 +79,10 @@ export default function Authentication(props: { user: any }) {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger
           asChild
-          className="rounded-none bg-blue-100/50 dark:bg-blue-900/50 px-3.5 py-2.5 text-sm  text-blue-600 shadow-sm hover:bg-blue-200/50 dark:hover:bg-blue-900/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+          className="rounded-none border-1  border-green-500 bg-green-500 px-3.5 py-2.5 text-sm  text-gray-100 dark:text-black shadow-sm hover:bg-green-600 dark:hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
         >
           <Button>
-            Login
+            sign in
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
@@ -167,9 +168,9 @@ export default function Authentication(props: { user: any }) {
   return (
     <Drawer>
       <DrawerTrigger
-        className="rounded-none bg-blue-100/50 dark:bg-blue-900/50 px-3.5 py-2.5 text-sm  text-blue-600 shadow-sm hover:bg-blue-200/50 dark:hover:bg-blue-900/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+        className="rounded-none border-1  border-green-500 bg-green-500 px-3.5 py-2.5 text-sm  text-gray-100 dark:text-black shadow-sm hover:bg-green-600 dark:hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
       >
-        Login
+       sign in
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>

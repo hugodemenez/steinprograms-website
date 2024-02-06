@@ -13,6 +13,9 @@ export default function Footer(){
                 <li>
                     <Link href="/legalNotices" className="mr-4 hover:underline md:mr-6">Legal Notice</Link>
                 </li>
+                <li>
+                    <Link href="/api" className="mr-4 hover:underline md:mr-6">API</Link>
+                </li>
                 {/* <li>
                     <Link href="/contact" className="hover:underline">Contact</Link>
                 </li> */}
