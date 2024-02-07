@@ -1,5 +1,6 @@
 'use server';
 import AuthenticationButton from "./authentication-button";
+import HamburgerMenu from "./hamburger-menu";
 import SteinProgramsLogo from "./logo/layout";
 import PageLinks from "./pageLinks";
 import { getUser } from "./server/user";
@@ -15,11 +16,12 @@ export default async function Header() {
             <div className="flex gap-8 items-center">
                 <SteinProgramsLogo></SteinProgramsLogo>
                 <div className="flex gap-4">
-                    <PageLinks/>
+                    <PageLinks className="hidden lg:flex"/>
                 </div>
             </div>
 
-            <div className="flex-end flex gap-4">
+            <div className="flex-end flex gap-4 items-center">
+                <HamburgerMenu/>
                 <SubscriptionButton/>
                 <AuthenticationButton user={user}/>
             </div>

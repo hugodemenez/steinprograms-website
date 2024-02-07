@@ -16,7 +16,7 @@ export default async function Home() {
                     </Link>
                 </div>
             </div>
-            <div className='flex flex-col min-h-dvh justify-around'>
+            <div className='flex flex-col min-h-screen justify-around'>
                 <div className="text-center ">
                     <h1 className=" uppercase text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-gray-300">
                         Unlocking the <span className='text-green-500 underline'>Secrets</span> of Cryptocurrency Markets
