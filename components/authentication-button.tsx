@@ -79,9 +79,10 @@ export default function AuthenticationButton(props: { user: any }) {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger
           asChild
-          className="rounded-none border-1  border-green-500 bg-green-500 px-3.5 py-2.5 text-sm  text-gray-100 dark:text-black shadow-sm hover:bg-green-600 dark:hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
         >
-          <Button>
+          <Button
+          className="rounded-md border-1  border-green-500 bg-green-500 px-3.5 py-2.5 text-sm  text-gray-100 dark:text-black shadow-sm hover:bg-green-600 dark:hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
+          >
             sign in
           </Button>
         </DialogTrigger>
@@ -166,9 +167,9 @@ export default function AuthenticationButton(props: { user: any }) {
     )
   }
   return (
-    <Drawer>
+    <Drawer shouldScaleBackground>
       <DrawerTrigger
-        className="rounded-none border-1  border-green-500 bg-green-500 px-3.5 py-2.5 text-sm  text-gray-100 dark:text-black shadow-sm hover:bg-green-600 dark:hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+        className="rounded-md border-1  border-green-500 bg-green-500 px-3.5 py-2.5 text-sm  text-gray-100 dark:text-black shadow-sm hover:bg-green-600 dark:hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
       >
        sign in
       </DrawerTrigger>

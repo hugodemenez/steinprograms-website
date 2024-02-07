@@ -16,14 +16,16 @@ export default async function Home() {
                     </Link>
                 </div>
             </div>
-            <div className="text-center min-h-screen">
-                <h1 className=" uppercase text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-gray-300">
-                    Unlocking the <span className='text-green-500 underline'>Secrets</span> of Cryptocurrency Markets
-                </h1>
-                <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-500">
-                    Welcome to the future of cryptocurrency investment and decision-making. In an era where information is power, our cutting-edge algorithm brings you a strategic advantage like never before.
-                </p>
-            <Chart data={null}/>
+            <div className='flex flex-col min-h-dvh justify-around'>
+                <div className="text-center ">
+                    <h1 className=" uppercase text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-gray-300">
+                        Unlocking the <span className='text-green-500 underline'>Secrets</span> of Cryptocurrency Markets
+                    </h1>
+                    <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-500">
+                        Welcome to the future of cryptocurrency investment and decision-making. In an era where information is power, our cutting-edge algorithm brings you a strategic advantage like never before.
+                    </p>
+                </div>
+                <Chart data={null} />
             </div>
             <div className="mx-auto max-w-5xl px-6 py-24 sm:py-32" id='roadmap'>
                 <ol className="relative border-l border-gray-300 dark:border-gray-700">

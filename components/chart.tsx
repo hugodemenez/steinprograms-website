@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect, useCallback } from 'react';
 import { Chart as ChartJS, registerables } from 'chart.js';
+import { useMediaQuery, useTheme } from '@/hooks/use-media-query';
 
 const Chart = ({ data }: { data: any }) => {
     ChartJS.register(...registerables);
@@ -11,11 +12,10 @@ const Chart = ({ data }: { data: any }) => {
     // Define handleResize using useCallback
     const handleResize = useCallback(() => {
         if (chartContainerRef.current && chartRef.current) {
-            
+           chartRef.current!.resize(); 
         }
     }, []);
     useEffect(() => {
-        handleResize();
         chartRef.current?.destroy()
         chartRef.current = new ChartJS(chartContainerRef.current!, {
             type: 'line',
@@ -26,9 +26,10 @@ const Chart = ({ data }: { data: any }) => {
                     data: [0, 3, 5, 2, 3, 6],
                     borderWidth: 1,
                     pointHoverRadius: 10,
+                    pointHitRadius: 10,
                     borderColor: '#3FD028',
                     fill: true,
-                    pointBackgroundColor: '#00000',
+                    pointBackgroundColor: 'background',
                     backgroundColor: (context) =>{
                         const bgColor = [
                             'rgba(63, 208, 40, 0.5)',
@@ -64,6 +65,7 @@ const Chart = ({ data }: { data: any }) => {
                 }
             }
         })
+        handleResize();
         // chartRef.current.timeScale().fitContent();
 
 
@@ -109,7 +111,7 @@ const Chart = ({ data }: { data: any }) => {
     }, [data]);
 
     return (
-        <div className='-translate-y-14'>
+        <div className='-translate-y-14 '>
         <canvas ref={chartContainerRef} className='w-full h-full' id='chart' />
         </div>
     )
