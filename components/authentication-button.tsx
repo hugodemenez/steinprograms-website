@@ -49,7 +49,7 @@ export default function AuthenticationButton(props: { user: any }) {
     return (
       <Button
         type="submit"
-        className="rounded-none bg-red-100/50  dark:bg-red-900/50 px-3.5 py-2.5 text-sm  text-red-600 shadow-sm hover:bg-red-100/30 dark:hover:bg-red-900/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
+        className="rounded-md bg-red-100/50  dark:bg-red-900/50 px-3.5 py-2.5 text-sm  text-red-500 border-red-300 dark:border-red-900 border hover:bg-red-100/30 dark:hover:bg-red-900/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
         onClick={
           async () => {
             setLogoutLoader(true)
@@ -65,7 +65,7 @@ export default function AuthenticationButton(props: { user: any }) {
             Logging out
           </>
           :
-          "Disconnect"
+          "log out"
         }
       </Button>
     )
