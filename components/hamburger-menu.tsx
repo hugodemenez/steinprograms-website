@@ -17,10 +17,10 @@ export default function HamburgerMenu() {
     const [open, setOpen] = useState(false)
     return (
         <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger className="flex lg:hidden items-center" onClick={()=>setOpen(true)} asChild>
-            <Button variant={"outline"}>
-            <Menu />
-            </Button>
+            <SheetTrigger className="flex lg:hidden items-center" onClick={() => setOpen(true)} asChild>
+                <Button variant={"outline"}>
+                    <Menu/>
+                </Button>
             </SheetTrigger>
             <SheetContent>
                 <SheetHeader>
@@ -29,11 +29,9 @@ export default function HamburgerMenu() {
                     </SheetDescription>
                 </SheetHeader>
                 <SheetClose asChild>
-
-                <PageLinks className="mt-24 flex-col mx-auto text-center" setOpen={setOpen}/>
+                    <PageLinks className="mt-24 flex-col mx-auto text-center" setOpen={setOpen} />
                 </SheetClose>
             </SheetContent>
         </Sheet>
-
     )
 }

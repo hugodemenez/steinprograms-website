@@ -23,7 +23,9 @@ export default async function RootLayout({
         <Providers>
           <div className='min-h-screen max-w-5xl mx-auto'>
           <Header></Header>
+          <div className='min-h-screen'>
             {children}
+          </div>
           <Footer></Footer>
           </div>
           <Toaster />
