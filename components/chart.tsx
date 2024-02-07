@@ -28,7 +28,7 @@ const Chart = ({ data }: { data: any }) => {
                     pointHitRadius: 10,
                     borderColor: '#3FD028',
                     fill: true,
-                    pointBackgroundColor: 'background',
+                    pointBackgroundColor: '#3FD028',
                     backgroundColor: (context) =>{
                         const bgColor = [
                             'rgba(63, 208, 40, 0.5)',

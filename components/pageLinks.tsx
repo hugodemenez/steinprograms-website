@@ -11,7 +11,7 @@ export default function PageLinks({className, setOpen}:{className?:string, setOp
     if (useBreakpoints().isLg){
     return (
         <div className={cn("flex gap-4",className)}>
-            <Link href='/news' className={pathname == '/news'?"text-green-500":""}>crypto-assets</Link>
+            <Link href='/news' className={pathname == '/news'?"text-green-600":""}>crypto-assets</Link>
             <Link href='/firms'>firms</Link>
             <Link href='/politics'>politics</Link>
         </div>
