@@ -2,7 +2,6 @@
 
 import React, { useRef, useEffect, useCallback } from 'react';
 import { Chart as ChartJS, registerables } from 'chart.js';
-import { useMediaQuery, useTheme } from '@/hooks/use-media-query';
 
 const Chart = ({ data }: { data: any }) => {
     ChartJS.register(...registerables);
