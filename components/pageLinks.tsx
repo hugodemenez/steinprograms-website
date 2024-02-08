@@ -16,7 +16,7 @@ export default function PageLinks({className, setOpen}:{className?:string, setOp
     return (
         <div className={cn("flex gap-4",className)}>
             {pages.map((page, i) => {
-             return <Link onClick={()=>{setOpen?.(false)}} href={page.path} className={pathname == page.path ?"text-green-500":""}>{page.name}</Link>
+             return <Link key={page.path} onClick={()=>{setOpen?.(false)}} href={page.path} className={pathname == page.path ?"text-green-500":""}>{page.name}</Link>
             })}
         </div>
     )

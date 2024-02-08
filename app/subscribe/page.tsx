@@ -1,4 +1,5 @@
 import APIKeyInput from '@/components/api-key-input'
+import { getUser } from '@/components/server/user'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { CheckIcon, ClipboardIcon } from '@heroicons/react/20/solid'
@@ -45,10 +46,16 @@ function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function SubscribePage() {
+export default async function SubscribePage() {
+
+    const user = await getUser()
     return (
         <div className=" py-24 sm:py-32">
+            {user?
             <APIKeyInput></APIKeyInput>
+            :
+            <></>
+            }
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="mx-auto max-w-4xl text-center">
                     <h2 className="text-base font-semibold leading-7 text-green-500">Pricing</h2>

@@ -81,17 +81,18 @@ export default function AuthenticationButton(props: { user: any }) {
         <DialogTrigger
           asChild
         >
-          <Button
-            className="rounded-md border-1  border-green-500 bg-green-500 px-3.5 py-2.5 text-sm  text-gray-100 dark:text-black shadow-sm hover:bg-green-600 dark:hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
-          >
-            sign in
-          </Button>
+        <Button
+            className="rounded-md ring-1  ring-green-500 bg-green-500 px-3.5 py-2.5 text-sm  text-gray-100 dark:text-black shadow-sm hover:bg-green-600 dark:hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
+        >
+        sign in
+        </Button>
+
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>Authentication</DialogTitle>
             <DialogDescription>
-              {!sent ? "Please enter a valid email address" : "Please enter OTP we've sent to " + email}
+              {!sent ? "Please enter a valid email address" : "Check " + email+" inbox"}
             </DialogDescription>
           </DialogHeader>
           <div className="flex gap-4 flex-col max-w-sm mx-auto">
@@ -168,16 +169,20 @@ export default function AuthenticationButton(props: { user: any }) {
     )
   }
   return (
-    <Drawer shouldScaleBackground>
+    <Drawer shouldScaleBackground open={open} onOpenChange={setOpen}>
       <DrawerTrigger
-        className="rounded-md border-1  border-green-500 bg-green-500 px-3.5 py-2.5 text-sm  text-gray-100 dark:text-black shadow-sm hover:bg-green-600 dark:hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+      asChild
       >
+        <Button
+            className="rounded-md ring-1  ring-green-500 bg-green-500 px-3.5 py-2.5 text-sm  text-gray-100 dark:text-black shadow-sm hover:bg-green-600 dark:hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
+        >
         sign in
+        </Button>
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
           <DrawerTitle>Authentication</DrawerTitle>
-          <DrawerDescription>{!sent ? "Please enter a valid email address" : "Please enter OTP we've sent to " + email}</DrawerDescription>
+          <DrawerDescription>{!sent ? "Please enter a valid email address" : "Check " + email+" inbox"}</DrawerDescription>
         </DrawerHeader>
         <div className="flex gap-4 flex-col max-w-sm mx-auto">
           {!sent ?

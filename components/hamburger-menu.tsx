@@ -19,7 +19,10 @@ export default function HamburgerMenu({user}:{user:any}) {
     return (
         <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger className="flex lg:hidden items-center" onClick={() => setOpen(true)} asChild>
-                <Button variant={"outline"}>
+                <Button variant={"outline"} 
+            className="rounded-md ring-1  ring-green-500 px-3.5 py-2.5 text-sm  dark:text-gray-100 text-black shadow-sm hover:bg-gray-300 dark:hover:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
+                >
+
                     <Menu/>
                 </Button>
             </SheetTrigger>
@@ -32,7 +35,7 @@ export default function HamburgerMenu({user}:{user:any}) {
                 <SheetClose asChild>
                     <PageLinks className="flex-col text-center" setOpen={setOpen} />
                 </SheetClose>
-                <div className="flex flex-col w-fit gap-2">
+                <div className="flex flex-col w-fit gap-2 text-center">
                 {user?
                 <p>Connected as {user.email}</p>
                 :

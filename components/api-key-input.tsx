@@ -30,7 +30,7 @@ export default function APIKeyInput() {
                 />
                 <div className="absolute inset-y-0 right-0 flex items-center pr-3">
                     {
-                        (copying && copySuccess) && <p>Copied!</p>
+                        (copying && copySuccess) && <p className="sm:hidden">Copied!</p>
                     }
                     {!copying ?
                         <Clipboard
@@ -59,9 +59,9 @@ export default function APIKeyInput() {
                             <ClipboardX />
                     }
                     {
-                        refreshing && <p>Refreshing...</p>
+                        refreshing && <p className="sm:hidden">Refreshing...</p>
                     }
-                    <RefreshCcw className="ml-2 cursor-pointer"
+                    <RefreshCcw className={refreshing?"animate-spin ml-2 cursor-pointer":"ml-2 cursor-pointer"}
                     onClick={() =>{
                         setRefreshing(true)
                         // Refresh the API Key
