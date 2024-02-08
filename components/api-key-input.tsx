@@ -1,7 +1,7 @@
 'use client';
 import { useState } from "react"
 import { Clipboard, ClipboardCheck, ClipboardX, RefreshCcw } from 'lucide-react';
-import { Button } from "./ui/button";
+
 export default function APIKeyInput() {
     function generateAPIKey() {
         return 'xxxx-xxxx-xxxx-xxxx-xxxx'.replace(/[x]/g, function(c) {
@@ -30,7 +30,7 @@ export default function APIKeyInput() {
                 />
                 <div className="absolute inset-y-0 right-0 flex items-center pr-3">
                     {
-                        (copying && copySuccess) && <p className="sm:hidden">Copied!</p>
+                        (copying && copySuccess) && <p className="hidden md:block">Copied!</p>
                     }
                     {!copying ?
                         <Clipboard
@@ -59,7 +59,7 @@ export default function APIKeyInput() {
                             <ClipboardX />
                     }
                     {
-                        refreshing && <p className="sm:hidden">Refreshing...</p>
+                        refreshing && <p className="hidden md:block">Refreshing...</p>
                     }
                     <RefreshCcw className={refreshing?"animate-spin ml-2 cursor-pointer":"ml-2 cursor-pointer"}
                     onClick={() =>{
