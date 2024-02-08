@@ -1,18 +1,22 @@
 'use client';
 import { useState } from "react"
 import { Clipboard, ClipboardCheck, ClipboardX, RefreshCcw } from 'lucide-react';
+import { updateUserAPIKey } from "./server/user";
 
-export default function APIKeyInput() {
+// TODO: Server is fetching user data:
+// apikey and subscription tier
+export default function APIKeyInput({user,apiKey}:{user:any,apiKey:string}) {
     function generateAPIKey() {
         return 'xxxx-xxxx-xxxx-xxxx-xxxx'.replace(/[x]/g, function(c) {
             var r = Math.random() * 16 | 0;
             return r.toString(16);
         });
     }
-    const [APIKey, setAPIKey] = useState(generateAPIKey())
+    const [APIKey, setAPIKey] = useState(apiKey)
     const [copying, setCopying] = useState(false)
     const [refreshing, setRefreshing] = useState(false)
     const [copySuccess, setCopySuccess] = useState(false)
+
 
     return (
         <div className="mb-12 -mt-24 mx-12">
@@ -62,13 +66,18 @@ export default function APIKeyInput() {
                         refreshing && <p className="hidden md:block">Refreshing...</p>
                     }
                     <RefreshCcw className={refreshing?"animate-spin ml-2 cursor-pointer":"ml-2 cursor-pointer"}
-                    onClick={() =>{
+                    onClick={async () =>{
                         setRefreshing(true)
                         // Refresh the API Key
-                        setTimeout(()=>{
-                            setRefreshing(false)
-                            setAPIKey(generateAPIKey())
-                        },500)
+                        // TODO: Generate a unique API key from the server
+                        const newAPIKey = generateAPIKey()
+                        const {data,updateError} = await updateUserAPIKey(newAPIKey)
+                        if (updateError) {
+                            setAPIKey('ERROR')
+                            return
+                        }
+                        setAPIKey(newAPIKey)
+                        setRefreshing(false)
                     }}
                     />
                 </div>

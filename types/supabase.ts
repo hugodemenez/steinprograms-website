@@ -6,12 +6,13 @@ export type Json =
   | { [key: string]: Json | undefined }
   | Json[]
 
-export interface Database {
+export type Database = {
   public: {
     Tables: {
       coindesk: {
         Row: {
           content: string | null
+          created_at: string | null
           creator: string | null
           date: string | null
           description: string | null
@@ -25,6 +26,7 @@ export interface Database {
         }
         Insert: {
           content?: string | null
+          created_at?: string | null
           creator?: string | null
           date?: string | null
           description?: string | null
@@ -38,6 +40,7 @@ export interface Database {
         }
         Update: {
           content?: string | null
+          created_at?: string | null
           creator?: string | null
           date?: string | null
           description?: string | null
@@ -102,6 +105,21 @@ export interface Database {
           label?: string | null
           score?: number | null
           title?: string | null
+        }
+        Relationships: []
+      }
+      users: {
+        Row: {
+          api_key: string
+          user_id: string | null
+        }
+        Insert: {
+          api_key: string
+          user_id?: string | null
+        }
+        Update: {
+          api_key?: string
+          user_id?: string | null
         }
         Relationships: []
       }
