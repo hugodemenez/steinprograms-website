@@ -1,4 +1,7 @@
-import { CheckIcon } from '@heroicons/react/20/solid'
+import APIKeyInput from '@/components/api-key-input'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { CheckIcon, ClipboardIcon } from '@heroicons/react/20/solid'
 
 const tiers = [
     {
@@ -45,6 +48,7 @@ function classNames(...classes: string[]) {
 export default function SubscribePage() {
     return (
         <div className=" py-24 sm:py-32">
+            <APIKeyInput></APIKeyInput>
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="mx-auto max-w-4xl text-center">
                     <h2 className="text-base font-semibold leading-7 text-green-500">Pricing</h2>
@@ -63,7 +67,7 @@ export default function SubscribePage() {
                             key={tier.id}
                             className={classNames(
                                 tier.mostPopular ? 'lg:z-10 lg:rounded-b-none' : 'lg:mt-8',
-                                'flex flex-col justify-between rounded-3xl p-8 ring-1 ring-gray-400 xl:p-10'
+                                'flex flex-col justify-between rounded-md p-8 ring-1 ring-gray-400 xl:p-10'
                             )}
                         >
                             <div>

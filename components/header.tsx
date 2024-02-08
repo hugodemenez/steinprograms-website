@@ -21,8 +21,8 @@ export default async function Header() {
             </div>
 
             <div className="flex-end flex gap-4 items-center">
-                <HamburgerMenu/>
-                <SubscriptionButton/>
+                <HamburgerMenu user={user}/>
+                <SubscriptionButton className="lg:flex hidden" user={user}/>
                 <AuthenticationButton user={user}/>
             </div>
         </nav>

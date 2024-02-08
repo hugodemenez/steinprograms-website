@@ -25,6 +25,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { useMediaQuery } from "@/hooks/use-media-query";
+import { LogOut } from "lucide-react";
 
 export default function AuthenticationButton(props: { user: any }) {
   const [email, setEmail] = useState('');
@@ -65,7 +66,7 @@ export default function AuthenticationButton(props: { user: any }) {
             Logging out
           </>
           :
-          "log out"
+          <LogOut />
         }
       </Button>
     )
@@ -81,7 +82,7 @@ export default function AuthenticationButton(props: { user: any }) {
           asChild
         >
           <Button
-          className="rounded-md border-1  border-green-500 bg-green-500 px-3.5 py-2.5 text-sm  text-gray-100 dark:text-black shadow-sm hover:bg-green-600 dark:hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
+            className="rounded-md border-1  border-green-500 bg-green-500 px-3.5 py-2.5 text-sm  text-gray-100 dark:text-black shadow-sm hover:bg-green-600 dark:hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
           >
             sign in
           </Button>
@@ -171,7 +172,7 @@ export default function AuthenticationButton(props: { user: any }) {
       <DrawerTrigger
         className="rounded-md border-1  border-green-500 bg-green-500 px-3.5 py-2.5 text-sm  text-gray-100 dark:text-black shadow-sm hover:bg-green-600 dark:hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
       >
-       sign in
+        sign in
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
