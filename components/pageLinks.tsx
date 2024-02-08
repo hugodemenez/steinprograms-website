@@ -8,20 +8,19 @@ import { Dispatch, SetStateAction } from "react";
 
 export default function PageLinks({className, setOpen}:{className?:string, setOpen?:Dispatch<SetStateAction<boolean>>}) {
     const pathname = usePathname()
-    if (useBreakpoints().isLg){
+    const pages = [
+        {name: 'crypto-assets', path: '/news'},
+        {name: 'firms', path: '/firms'},
+        {name: 'politics', path: '/politics'},
+    ]
     return (
         <div className={cn("flex gap-4",className)}>
-            <Link href='/news' className={pathname == '/news'?"text-green-600":""}>crypto-assets</Link>
-            <Link href='/firms'>firms</Link>
-            <Link href='/politics'>politics</Link>
-        </div>
-    );
-    }
-    return (
-        <div className={cn("flex gap-4",className)}>
-            <Link onClick={()=>{setOpen?.(false)}} href='/news' className={pathname == '/news'?"text-green-500":""}>crypto-assets</Link>
-            <Link onClick={()=>{setOpen?.(false)}} href='/firms'>firms</Link>
-            <Link onClick={()=>{setOpen?.(false)}} href='/politics'>politics</Link>
+            {pages.map((page, i) => {
+             return <Link onClick={()=>{setOpen?.(false)}} href={page.path} className={pathname == page.path ?"text-green-500":""}>{page.name}</Link>
+            })}
         </div>
     )
+    // There should be a dropdown menu for user settings if connect (on desktop)
+    // Or a link to setting page in the hamburger on mobile, saying connected as {user.name}
+    // Manage plan if already subscribe instead of subscribe
 }
