@@ -9,14 +9,14 @@ import { Dispatch, SetStateAction } from "react";
 export default function PageLinks({className, setOpen}:{className?:string, setOpen?:Dispatch<SetStateAction<boolean>>}) {
     const pathname = usePathname()
     const pages = [
-        {name: 'crypto-assets', path: '/news'},
-        {name: 'firms', path: '/firms'},
-        {name: 'politics', path: '/politics'},
+        {name: 'Crypto', path: '/crypto'},
+        {name: 'Firms', path: '/firms'},
+        {name: 'Politics', path: '/politics'},
     ]
     return (
         <div className={cn("flex gap-4",className)}>
             {pages.map((page, i) => {
-             return <Link key={page.path} onClick={()=>{setOpen?.(false)}} href={page.path} className={pathname == page.path ?"text-green-500":""}>{page.name}</Link>
+             return <Link key={page.path} onClick={()=>{setOpen?.(false)}} href={page.path} className={pathname == page.path ?"text-green-500":"hover:text-green-700"}>{page.name}</Link>
             })}
         </div>
     )

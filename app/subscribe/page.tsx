@@ -1,8 +1,6 @@
 import APIKeyInput from '@/components/api-key-input'
 import { getUser, getUserApiKey } from '@/components/server/user'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { CheckIcon, ClipboardIcon } from '@heroicons/react/20/solid'
+import { CheckIcon } from '@heroicons/react/20/solid'
 
 const tiers = [
     {

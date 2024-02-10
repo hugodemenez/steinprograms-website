@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import Chart from '@/components/chart'
+import SearchBar from '@/components/searchBar'
 export default async function Home() {
     return (
         <div className="py-6 lg:py-24 px-6">
@@ -17,10 +18,11 @@ export default async function Home() {
                 </div>
             </div>
             <div className='flex flex-col min-h-screen justify-around'>
-                <div className="text-center">
+                <div className="flex flex-col gap-4 text-center">
                     <h1 className="uppercase text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-gray-300">
                         Unlocking the <span className='text-green-500 underline'>Secrets</span> of Cryptocurrency Markets
                     </h1>
+                    <SearchBar></SearchBar>
                     <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-500">
                         Welcome to the future of cryptocurrency investment and decision-making. In an era where information is power, our cutting-edge algorithm brings you a strategic advantage like never before.
                     </p>

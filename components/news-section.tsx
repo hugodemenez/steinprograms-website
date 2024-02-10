@@ -20,6 +20,7 @@ export default async function NewsSection() {
     var { data } = await supabase.from('marketnews_free').select().order('created_at', { ascending: false })
   }
 
+
   return (
     <div className="py-4 sm:py-8 px-6">
       <h2 className="flex items-baseline gap-1 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-2 dark:text-white">
@@ -37,6 +38,7 @@ export default async function NewsSection() {
         :
         ""
       }
+
       <div className="mx-auto mt-10 grid grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3 relative">
         {data?.map((post) => (
           <article key={post.id} className="flex max-w-xl flex-col items-start justify-between transition-opacity animate-in enter:">

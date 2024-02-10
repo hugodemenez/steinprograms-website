@@ -76,6 +76,7 @@ export default function APIKeyInput({user,apiKey}:{user:any,apiKey:string}) {
                             setAPIKey('ERROR')
                             return
                         }
+                        console.log(data)
                         setAPIKey(newAPIKey)
                         setRefreshing(false)
                     }}
