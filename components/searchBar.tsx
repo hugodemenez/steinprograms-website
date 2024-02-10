@@ -56,7 +56,7 @@ export function CommandPalet({ open, setOpen }: { open: boolean, setOpen: React.
         <CommandDialog open={open} onOpenChange={setOpen}>
             <CommandInput value={search} autoComplete="off" spellCheck={false} onValueChange={setSearch} onKeyDown={validateEvent} />
             <CommandList>
-                <CommandEmpty>No results found.</CommandEmpty>
+                <CommandEmpty>Press enter to start searching</CommandEmpty>
                 <CommandGroup heading="Suggestions">
                     <CommandItem
                         onSelect={() => router.push(`/search/bitcoin`)}
