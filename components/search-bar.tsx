@@ -20,7 +20,7 @@ import { Search } from "lucide-react";
 export default function SearchBar() {
     const [open, setOpen] = React.useState(false)
     return (
-        <div>
+        <div className="max-w-5xl">
             <div className="relative mt-2 rounded-md shadow-sm">
                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                     <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />

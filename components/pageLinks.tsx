@@ -1,9 +1,7 @@
 'use client';
-import { useBreakpoints } from "@/hooks/use-media-query";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { isAuthenticated } from "./server/user";
 import { Dispatch, SetStateAction } from "react";
 
 export default function PageLinks({className, setOpen}:{className?:string, setOpen?:Dispatch<SetStateAction<boolean>>}) {

@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import Chart from '@/components/chart'
-import SearchBar from '@/components/searchBar'
+import SearchBar from '@/components/search-bar'
+
 export default async function Home() {
     return (
         <div className="py-6 lg:py-24 px-6">
@@ -17,8 +17,8 @@ export default async function Home() {
                     </Link>
                 </div>
             </div>
-            <div className='flex flex-col min-h-screen justify-around'>
-                <div className="flex flex-col gap-4 text-center">
+            <div className='flex flex-col min-h-[80vh] justify-around'>
+                <div className="flex flex-col gap-4 text-left">
                     <h1 className="uppercase text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-gray-300">
                         Unlocking the <span className='text-green-500 underline'>Secrets</span> of Cryptocurrency Markets
                     </h1>

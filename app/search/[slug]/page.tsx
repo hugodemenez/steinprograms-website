@@ -7,7 +7,7 @@ export default async function SearchPage({ params }: { params: any }) {
 
   const searchResults = await getLatestNews(params.slug)
   return (
-      <div className="flex flex-col mx-auto max-w-5xl px-6 divide-y gap-8 mt-10">
+      <div className="flex flex-col mx-auto divide-y gap-8 mt-10">
         {searchResults?.map((news:any) => (
           <article className="py-4" key={news.title + "focus"}>
             <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-300">

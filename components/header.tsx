@@ -1,7 +1,7 @@
 'use server';
 import AuthenticationButton from "./authentication-button";
 import HamburgerMenu from "./hamburger-menu";
-import SteinProgramsLogo from "./logo/layout";
+import SteinProgramsLogo from "./logo";
 import PageLinks from "./pageLinks";
 import { getUser } from "./server/user";
 import SubscriptionButton from "./subscription-button";
