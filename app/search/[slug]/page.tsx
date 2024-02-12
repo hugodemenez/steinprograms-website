@@ -1,3 +1,4 @@
+import Post from "@/components/post";
 import { getLatestNews } from "@/components/server/api";
 import Link from "next/link";
 import React from "react";
@@ -19,7 +20,7 @@ export default async function SearchPage({ params }: { params: any }) {
             >
               {new Date(news.date).toDateString()}
             </time>
-            <p className="dark:text-white  mt-4">{news.content == ""?news.description:news.content}</p>
+            <div className="dark:text-white  mt-4">{news.content == ""?<p>{news.description}</p>:<Post content={news.content}></Post>}</div>
             <Link href={news.link} className="underline hover:text-green-500">Source</Link>
           </article>
         ))}
