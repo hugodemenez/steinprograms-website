@@ -1,19 +1,20 @@
-import { createClientComponentClient, createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { Database, Tables } from '../types/supabase'
 import { CryptoLogo } from '../components/crypto-logos'
 import Score from './score'
 import Link from 'next/link'
+import { getUser } from './server/user'
 
 export default async function NewsSection() {
 
   const supabase = createServerComponentClient<Database>({ cookies });
-  const { data: user } = await supabase.auth.getUser();
+  const user = await getUser()
 
   // Get types from supabase
   var data: Tables<'marketnews'>[] | null;
 
-  if (user.user) {
+  if (user) {
     var { data } = await supabase.from('marketnews').select().order('created_at', { ascending: false })
   }
   else {
@@ -31,14 +32,8 @@ export default async function NewsSection() {
         </span>
       </h2>
       <p className="text-lg leading-8 text-gray-600 dark:text-gray-300">
-        Powered by SteinPrograms&apos; most advanced algorithm
+        {!user?"Here are news sample, sign in to access latest ones.":""}
       </p>
-      {!user.user ?
-        <h2 className='text-2xl mt-6'>Here are news sample, sign in to access latest ones.</h2>
-        :
-        ""
-      }
-
       <div className="mx-auto mt-10 grid grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3 relative">
         {data?.map((post) => (
           <article key={post.id} className="flex max-w-xl flex-col items-start justify-between transition-opacity animate-in enter:">

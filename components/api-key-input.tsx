@@ -30,7 +30,7 @@ export default function APIKeyInput({user,apiKey}:{user:any,apiKey:string}) {
                     id="account-api-key"
                     className="bg-background block w-full rounded-md border-0 py-1.5 pr-10 pl-2 text-gray-900 dark:text-gray-100 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
                     readOnly
-                    value={APIKey}
+                    value={APIKey?APIKey:'Press refresh to generate a new API Key'}
                 />
                 <div className="absolute inset-y-0 right-0 flex items-center pr-3">
                     {
