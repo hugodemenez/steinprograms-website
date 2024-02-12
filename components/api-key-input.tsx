@@ -19,7 +19,7 @@ export default function APIKeyInput({user,apiKey}:{user:any,apiKey:string}) {
 
 
     return (
-        <div className="mb-12 -mt-24 mx-12">
+        <div className="">
             <label htmlFor="account-number" className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-100">
                 API Key
             </label>

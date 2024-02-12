@@ -1,5 +1,5 @@
 import APIKeyInput from '@/components/api-key-input'
-import { getUser, getUserApiKey } from '@/components/server/user'
+import { getUser, getUserData } from '@/components/server/user'
 import { CheckIcon } from '@heroicons/react/20/solid'
 
 const tiers = [
@@ -46,11 +46,11 @@ function classNames(...classes: string[]) {
 
 export default async function SubscribePage() {
     const user = await getUser()
-    const apiKey = await getUserApiKey(user)
+    const userData = await getUserData(user)
     return (
-        <div className=" py-24 sm:py-32">
+        <div className=" py-8 sm:py-12 flex flex-col gap-8">
             {user?
-            <APIKeyInput user={user} apiKey={apiKey}></APIKeyInput>
+            <APIKeyInput user={user} apiKey={userData.api_key}></APIKeyInput>
             :
             <></>
             }

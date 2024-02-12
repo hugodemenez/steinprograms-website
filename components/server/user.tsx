@@ -22,7 +22,7 @@ export async function logout() {
   await supabase.auth.signOut()
 }
 
-export async function getUserApiKey(user: any) {
+export async function getUserData(user: any) {
   if (!user) return 'UNABLE TO FIND USER';
   const supabase = createServerComponentClient({ cookies })
 
@@ -34,7 +34,7 @@ export async function getUserApiKey(user: any) {
   if (users?.length == 0) {
     return 'GENERATE API KEY'
   }
-  return users![0].api_key;
+  return users![0];
 }
 
 export async function updateUserAPIKey(apiKey:string) {
