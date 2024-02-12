@@ -14,6 +14,7 @@ import PageLinks from "./pageLinks";
 import { useState } from "react";
 import { Menu } from "lucide-react"
 import SubscriptionButton from "./subscription-button";
+import AuthenticationButton from "./authentication-button";
 export default function HamburgerMenu({ user }: { user: any }) {
     const [open, setOpen] = useState(false)
     return (
@@ -34,13 +35,14 @@ export default function HamburgerMenu({ user }: { user: any }) {
                 <SheetClose asChild>
                     <PageLinks className="flex-col text-center" setOpen={setOpen} />
                 </SheetClose>
-                <div className="flex flex-col w-fit gap-2 text-center">
+                <div className="justify-around flex flex-col w-fit gap-2 text-center">
+                    <SubscriptionButton className="self-center" setOpen={setOpen} user={user} />
                     {user ?
                         <p>Connected as {user.email}</p>
                         :
                         ''
                     }
-                    <SubscriptionButton className="self-center" setOpen={setOpen} user={user} />
+                    <AuthenticationButton user={user} className=""></AuthenticationButton>
                 </div>
             </SheetContent>
         </Sheet>

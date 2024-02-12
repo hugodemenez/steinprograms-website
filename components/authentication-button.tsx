@@ -26,8 +26,10 @@ import {
 } from "@/components/ui/dialog"
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { LogOut } from "lucide-react";
+import ConnectButton from "./connect-button";
+import { cn } from "@/lib/utils";
 
-export default function AuthenticationButton(props: { user: any }) {
+export default function AuthenticationButton(props: { user: any, className:string }) {
   const [email, setEmail] = useState('');
   const [token, setToken] = useState('');
   const [sent, setSent] = React.useState(false)
@@ -46,11 +48,14 @@ export default function AuthenticationButton(props: { user: any }) {
   }
 
   // If there is a user, display log out button
+
   if (props.user) {
     return (
       <Button
         type="submit"
-        className="rounded-md bg-red-100/50  dark:bg-red-900/50 px-3.5 py-2.5 text-sm  text-red-500 border-red-300 dark:border-red-900 border hover:bg-red-200 dark:hover:bg-red-900/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
+        className={cn(props.className,
+          "rounded-md bg-red-100/50  dark:bg-red-900/50 px-3.5 py-2.5 text-sm  text-red-500 ring-1 ring-red-300 dark:ring-red-900  hover:bg-red-200 dark:hover:bg-red-900/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
+          )}
         onClick={
           async () => {
             setLogoutLoader(true)
@@ -61,12 +66,14 @@ export default function AuthenticationButton(props: { user: any }) {
         }
       >
         {logoutLoader ?
-          <>
+          <div className="flex gap-2 items-center">
             <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
             Logging out
-          </>
+          </div>
           :
-          <LogOut />
+          <div className="flex items-center">
+          <LogOut /> 
+          </div>
         }
       </Button>
     )
@@ -81,12 +88,7 @@ export default function AuthenticationButton(props: { user: any }) {
         <DialogTrigger
           asChild
         >
-          <Button
-            className="rounded-md ring-1  ring-green-500 bg-green-500 px-3.5 py-2.5 text-sm  text-gray-100 dark:text-black shadow-sm hover:bg-green-600 dark:hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
-          >
-            sign in
-          </Button>
-
+          <ConnectButton setOpen={setOpen} className={props.className}/>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
@@ -173,11 +175,7 @@ export default function AuthenticationButton(props: { user: any }) {
       <DrawerTrigger
         asChild
       >
-        <Button
-          className="rounded-md ring-1  ring-green-500 bg-green-500 px-3.5 py-2.5 text-sm  text-gray-100 dark:text-black shadow-sm hover:bg-green-600 dark:hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
-        >
-          sign in
-        </Button>
+        <ConnectButton setOpen={setOpen} className={props.className}/>
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
