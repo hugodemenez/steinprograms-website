@@ -66,17 +66,26 @@ export function CommandPalet({ open, setOpen }: { open: boolean, setOpen: React.
                 <CommandEmpty>Press enter to start searching</CommandEmpty>
                 <CommandGroup heading="Suggestions">
                     <CommandItem
-                        onSelect={() => router.push(`/search/bitcoin`)}
+                        onSelect={() => {
+                            setOpen(false)
+                            router.push(`/search/bitcoin`)
+                        }}
                     >
                         Bitcoin
                     </CommandItem>
                     <CommandItem
-                        onSelect={() => router.push(`/search/ethereum`)}
+                        onSelect={() => {
+                            setOpen(false)
+                            router.push(`/search/ethereum`)
+                        }}
                     >
                         Ethereum
                     </CommandItem>
                     <CommandItem
-                        onSelect={() => router.push(`/search/solana`)}
+                        onSelect={() => {
+                            setOpen(false)
+                            router.push(`/search/solana`)
+                        }}
                     >
                         Solana
                     </CommandItem>
