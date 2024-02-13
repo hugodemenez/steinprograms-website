@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const {nextui} = require("@nextui-org/react");
-
+const { colors } = require('tailwindcss/defaultTheme')
 module.exports = {
   darkMode: ["media"],
   content: [
@@ -21,6 +21,10 @@ module.exports = {
     },
     extend: {
       colors: {
+        green: {
+          ...colors.green,
+          500: "#00ff00",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

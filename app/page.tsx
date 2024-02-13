@@ -19,7 +19,7 @@ export default async function Home() {
             </div>
             <div className='flex flex-col min-h-[80vh] justify-around'>
                 <div className="flex flex-col gap-4 text-left">
-                    <h1 className="uppercase text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-gray-300">
+                    <h1 className="uppercase text-4xl font-normal tracking-tight text-gray-900 sm:text-6xl dark:text-gray-300">
                         Unlocking the <span className='text-green-500 underline'>Secrets</span> of Cryptocurrency Markets
                     </h1>
                     <SearchBar></SearchBar>
@@ -36,7 +36,7 @@ export default async function Home() {
                         <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
                             September 2023
                         </time>
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        <h3 className="text-lg font-normal text-gray-900 dark:text-white">
                             V0
                         </h3>
                         <p className="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
@@ -48,7 +48,7 @@ export default async function Home() {
                         <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
                             January 2024
                         </time>
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        <h3 className="text-lg font-normal text-gray-900 dark:text-white">
                             Realtime News API
                         </h3>
                         <p className="text-base font-normal text-gray-500 dark:text-gray-400">
@@ -61,7 +61,7 @@ export default async function Home() {
                         <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
                             February 2024
                         </time>
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        <h3 className="text-lg font-normal text-gray-900 dark:text-white">
                             News Interpreter
                         </h3>
                         <p className="text-base font-normal text-gray-500 dark:text-gray-400">
@@ -74,7 +74,7 @@ export default async function Home() {
                         <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
                             March 2024
                         </time>
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        <h3 className="text-lg font-normal text-gray-900 dark:text-white">
                             Trading
                         </h3>
                         <p className="text-base font-normal text-gray-500 dark:text-gray-400">
@@ -86,7 +86,7 @@ export default async function Home() {
                         <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
                             September 2024
                         </time>
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        <h3 className="text-lg font-normal text-gray-900 dark:text-white">
                             Sharing Pool
                         </h3>
                         <p className="text-base font-normal text-gray-500 dark:text-gray-400">

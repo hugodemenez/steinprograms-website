@@ -24,7 +24,7 @@ const Chart = ({ data }: { data: any }) => {
                     data: [0, 3, 5, 2, 3, 6],
                     borderWidth: 1,
                     pointHoverRadius: 10,
-                    pointHitRadius: 10,
+                    pointHitRadius: 20,
                     borderColor: '#3FD028',
                     fill: true,
                     pointBackgroundColor: '#3FD028',

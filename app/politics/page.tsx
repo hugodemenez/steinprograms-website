@@ -5,7 +5,7 @@ export default async function PoliticsPage(){
     const user = await getUser()
     return (
     <div className="py-4 sm:py-8 px-6">
-      <h2 className="flex items-baseline gap-1 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-2 dark:text-white">
+      <h2 className="flex items-baseline gap-1 text-3xl font-normal uppercase tracking-tight text-gray-900 sm:text-4xl mb-2 dark:text-white">
         Politics News
         <span className="relative flex h-3 w-3">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-600 opacity-75"></span>

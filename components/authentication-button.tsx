@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input"
 import { toast } from "sonner";
 import { sendOTP, validateOTP } from "./server/otp";
 import { ReloadIcon } from "@radix-ui/react-icons"
-import { getUser, logout } from "./server/user";
+import { logout } from "./server/user";
 import {
   Dialog,
   DialogContent,
