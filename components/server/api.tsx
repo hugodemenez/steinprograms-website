@@ -3,9 +3,9 @@
 
 export async function getLatestNews(symbol:string){
     try{
-        const result = await fetch(`http://api.steinprograms.com:5050/news?symbol=${symbol}`,{
-            // Revalidate the data every 10 minutes
-            next: { revalidate: 600 },
+        const result = await fetch(`http://api.steinprograms.com:5050/news?symbol=${symbol}&summarize=true`,{
+            // Revalidate the data every 60 minutes
+            next: { revalidate: 3600 },
         })
         if (!result.ok) {
             throw new Error(`HTTP error! status: ${result.status}`);

@@ -6,9 +6,9 @@ import { toast } from "sonner";
 export default function RealTimeNews({searchResults,error}:{searchResults:any,error:any}) {
     error && toast.error(error)
     return(
-      <div className="flex flex-col mx-auto divide-y gap-8 mt-10">
+      <div className="flex flex-col mx-auto divide-y divide-gray-300 dark:divide-gray-700 gap-8 mt-8">
         {searchResults?.map((news:any) => (
-          <article className="py-4 border-b border-gray-300" key={news.title + "focus"}>
+          <article className="pt-8" key={news.title + "focus"}>
             <h1 className="text-3xl font-normal uppercase tracking-tight text-gray-900 sm:text-4xl dark:text-gray-300">
               {news.title}
             </h1>
