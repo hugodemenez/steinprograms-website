@@ -7,17 +7,16 @@ export async function getLatestNews(symbol:string){
         const result = await fetch(
             `http://api.steinprograms.com:5050/news?symbol=${symbol}&summarize=true`,{
                 next: { revalidate: 3600 },
-                method: 'POST',
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
+                    'X-API-KEY': process.env.STEINPROGRAMS_API_KEY || '',
                 },
-                body: JSON.stringify({
-                    api_key: process.env.STEINPROGRAMS_API_KEY
-                }), 
             },
         )
         if (!result.ok) {
-            throw new Error(`HTTP error! status: ${result.status}`);
+            const errorResponse = await result.json();
+            throw new Error(`Error status: ${result.status}; message: ${errorResponse.detail}`);
         }
         const data = await result.json()
         return {data:data}
