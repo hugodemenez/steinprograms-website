@@ -23,7 +23,7 @@ module.exports = {
       colors: {
         green: {
           ...colors.green,
-          500: "#00ff00",
+          500: "#3FD028",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
