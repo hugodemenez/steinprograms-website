@@ -133,7 +133,7 @@ export default async function SubscribePage() {
                                     tier={tier.tier}
                                     email={user.email}
                                     userId={user.id}
-                                    priceId={prices.data.find(price => price.nickname == tier.nickname)!.id}
+                                    priceId={prices.data.find(price => price.nickname == tier.nickname)?.id}
                                     aria-describedby={tier.id}
                                     className={classNames(
                                         tier.currentTier

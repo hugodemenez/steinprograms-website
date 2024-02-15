@@ -22,10 +22,11 @@ export default function StripeButton({
     tier: number,
     email: string,
     userId: string,
-    priceId: string,
+    priceId: string | undefined,
     subscriptionId: string | undefined | null
 }) {
 
+    if (!priceId) return null
     const router = useRouter()
     // If user is already subscribed, show manage subscription button
     if (subscriptionId) {
