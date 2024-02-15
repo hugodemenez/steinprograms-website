@@ -15,9 +15,6 @@ export async function getPrices() {
 }
 
 export async function getStripeCheckout(email: string, userId: string, priceId: string, tier: number) {
-    const vercelUrl = process.env.VERCEL_URL?.startsWith('http')
-        ? process.env.VERCEL_URL
-        : 'https://' + process.env.VERCEL_URL;
 
     // Create a checkout session
     const checkoutSession = await stripe.checkout.sessions.create({
@@ -34,8 +31,8 @@ export async function getStripeCheckout(email: string, userId: string, priceId: 
             },
         ],
         mode: 'subscription',
-        success_url: vercelUrl + '/subscribe',
-        cancel_url: vercelUrl + '/subscribe',
+        success_url: process.env.STRIPE_REDIRECT_SUCCESS_URL,
+        cancel_url: process.env.STRIPE_REDIRECT_CANCEL_URL,
     });
     return checkoutSession.url
 }
