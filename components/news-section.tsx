@@ -4,7 +4,7 @@ import { Database, Tables } from '../types/supabase'
 import { CryptoLogo } from '../components/crypto-logos'
 import Score from './score'
 import Link from 'next/link'
-import { getUser } from './server/user'
+import { getUser } from './server/database'
 
 export default async function NewsSection() {
 

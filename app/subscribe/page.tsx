@@ -1,15 +1,24 @@
 import APIKeyInput from '@/components/api-key-input'
-import { getUser, getUserData } from '@/components/server/user'
+import { getPrices, getStripeCheckout } from '@/components/server/stripe'
+import { getUser, getUserData } from '@/components/server/database'
+import StripeButton from '@/components/stripe-button'
 import { CheckIcon } from '@heroicons/react/20/solid'
-
+import { Button } from '@nextui-org/react'
+import { User } from '@supabase/supabase-js'
+import { redirect } from 'next/navigation'
 
 function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ')
 }
 
 export default async function SubscribePage() {
-    const user = await getUser()
+    const user = await getUser() as User | null
     const userData = await getUserData(user)
+    // Check if user is a customer through stripe
+    // If not, create a checkout session
+    const subscriptionId = userData?.subscriptionId
+    const prices = await getPrices()
+
     const tiers = [
         {
             name: 'Free',
@@ -22,20 +31,22 @@ export default async function SubscribePage() {
                 'Sentiment score',
                 '1 week history'
             ],
-            currentTier: userData.tier==0,
-        },{
-            name: 'Student',
-            id: 'tier-student',
+            currentTier: userData?.tier == 0,
+        }, {
+            name: 'Starter',
+            id: 'tier-starter',
             href: '#',
             priceMonthly: '$5',
-            description: 'Access to all features for school projects and learning.',
+            description: 'Access to all features.',
             features: [
                 '10 requests/min',
                 'Access to all markets',
                 'Sentiment analysis',
                 '12 months history'
             ],
-            currentTier: userData.tier==1,
+            currentTier: userData?.tier == 1,
+            nickname: "starter",
+            tier:1,
         },
         {
             name: 'Enterprise',
@@ -44,17 +55,19 @@ export default async function SubscribePage() {
             priceMonthly: '$50',
             description: 'Dedicated support and infrastructure for your company.',
             features: [
-                '10k requests/min',
+                '1000 requests/min',
                 'Everything in student tier',
                 '1-hour, dedicated support response time',
             ],
-            currentTier: userData.tier==2,
+            currentTier: userData?.tier == 2,
+            nickname: "enterprise",
+            tier:2,
         },
     ]
     return (
         <div className=" py-8 sm:py-12 flex flex-col gap-8 max-w-5xl px-6">
             {user ?
-                <APIKeyInput user={user} apiKey={userData.api_key}></APIKeyInput>
+                <APIKeyInput user={user} apiKey={userData?.api_key}></APIKeyInput>
                 :
                 <></>
             }
@@ -98,10 +111,10 @@ export default async function SubscribePage() {
                                 </div>
                                 <p className="mt-4 text-sm leading-6 text-gray-600 dark:text-gray-400">{tier.description}</p>
                                 {tier.priceMonthly &&
-                                <p className="mt-6 flex items-baseline gap-x-1">
-                                    <span className="text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100">{tier.priceMonthly}</span>
-                                    <span className="text-sm font-semibold leading-6 text-gray-600 dark:text-gray-300">/month</span>
-                                </p>
+                                    <p className="mt-6 flex items-baseline gap-x-1">
+                                        <span className="text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100">{tier.priceMonthly}</span>
+                                        <span className="text-sm font-semibold leading-6 text-gray-600 dark:text-gray-300">/month</span>
+                                    </p>
                                 }
                                 <ul role="list" className="mt-8 space-y-3 text-sm leading-6 text-gray-600 dark:text-gray-400">
                                     {tier.features.map((feature) => (
@@ -112,18 +125,26 @@ export default async function SubscribePage() {
                                     ))}
                                 </ul>
                             </div>
-                            <a
-                                href={tier.href}
-                                aria-describedby={tier.id}
-                                className={classNames(
-                                    tier.currentTier
-                                        ? 'bg-green-600 text-white shadow-sm hover:bg-green-500'
-                                        : 'text-green-500 ring-1 ring-inset ring-green-500 hover:ring-green-800 dark:ring-green-800 dark:hover:ring-green-100',
-                                    'mt-8 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600'
-                                )}
-                            >
-                                {tier.currentTier?"Cancel":"Buy plan"}
-                            </a>
+                            {
+                                (user && tier.nickname && user.email) &&
+                                <StripeButton
+                                    currentTier={userData?.tier}
+                                    subscriptionId={subscriptionId}
+                                    tier={tier.tier}
+                                    email={user.email}
+                                    userId={user.id}
+                                    priceId={prices.data.find(price => price.nickname == tier.nickname)!.id}
+                                    aria-describedby={tier.id}
+                                    className={classNames(
+                                        tier.currentTier
+                                            ? 'bg-green-600 text-white shadow-sm hover:bg-green-500'
+                                            : 'text-green-500 ring-1 ring-inset ring-green-500 hover:ring-green-800 dark:ring-green-800 dark:hover:ring-green-100',
+                                        'mt-8 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600'
+                                    )}
+                                >
+                                    {tier.currentTier ? "Cancel" : "Buy plan"}
+                                </StripeButton>
+                            }
                         </div>
                     ))}
                 </div>

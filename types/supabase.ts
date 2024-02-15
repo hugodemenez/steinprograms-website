@@ -111,15 +111,21 @@ export type Database = {
       users: {
         Row: {
           api_key: string
-          user_id: string | null
+          subscriptionId: string | null
+          tier: number
+          user_id: string
         }
         Insert: {
           api_key: string
-          user_id?: string | null
+          subscriptionId?: string | null
+          tier?: number
+          user_id?: string
         }
         Update: {
           api_key?: string
-          user_id?: string | null
+          subscriptionId?: string | null
+          tier?: number
+          user_id?: string
         }
         Relationships: []
       }

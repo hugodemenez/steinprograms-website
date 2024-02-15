@@ -4,7 +4,7 @@ import AuthenticationButton from "./authentication-button";
 import HamburgerMenu from "./hamburger-menu";
 import SteinProgramsLogo from "./logo";
 import PageLinks from "./pageLinks";
-import { getUser } from "./server/user";
+import { getUser } from "./server/database";
 import SubscriptionButton from "./subscription-button";
 
 

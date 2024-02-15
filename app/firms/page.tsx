@@ -1,4 +1,4 @@
-import { getUser } from "@/components/server/user";
+import { getUser } from "@/components/server/database";
 
 export default async function FirmsPage() {
     const user = await getUser()

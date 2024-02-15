@@ -1,5 +1,5 @@
 import APIKeyInput from "@/components/api-key-input";
-import { getUser, getUserData } from "@/components/server/user";
+import { getUser, getUserData } from "@/components/server/database";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -23,10 +23,10 @@ export default async function SettingsPage() {
                     />
                 </div>
             </div>
-            <APIKeyInput user={user} apiKey={userData.api_key} />
+            <APIKeyInput user={user} apiKey={userData?.api_key} />
             <p>Current plan : {
                 (() => {
-                    switch (userData.tier) {
+                    switch (userData?.tier) {
                         case 0:
                             return 'Free';
                         case 1:

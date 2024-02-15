@@ -1,11 +1,12 @@
 'use client';
 import { useState } from "react"
 import { Clipboard, ClipboardCheck, ClipboardX, RefreshCcw } from 'lucide-react';
-import { updateUserAPIKey } from "./server/user";
+import { updateUserAPIKey } from "./server/database";
+import { toast } from "sonner";
 
 // TODO: Server is fetching user data:
 // apikey and subscription tier
-export default function APIKeyInput({user,apiKey}:{user:any,apiKey:string}) {
+export default function APIKeyInput({user,apiKey}:{user:any,apiKey:string|undefined}) {
     function generateAPIKey() {
         return 'xxxx-xxxx-xxxx-xxxx-xxxx'.replace(/[x]/g, function(c) {
             var r = Math.random() * 16 | 0;
@@ -40,6 +41,7 @@ export default function APIKeyInput({user,apiKey}:{user:any,apiKey:string}) {
                         <Clipboard
                             className="cursor-pointer"
                             onClick={() => {
+                                APIKey?
                                 navigator.clipboard.writeText(APIKey)
                                     .then(() => {
                                         // The text has been successfully written to the clipboard
@@ -53,7 +55,9 @@ export default function APIKeyInput({user,apiKey}:{user:any,apiKey:string}) {
                                         console.error('Error writing text to clipboard', err);
                                         setCopying(true)
                                         setCopySuccess(false)
-                                    });
+                                    })
+                                :
+                                toast.warning('No API Key to copy')
                             }}
                         />
                         :
