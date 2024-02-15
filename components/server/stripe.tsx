@@ -10,6 +10,7 @@ export async function getPrices() {
     const prices = await stripe.prices.list({
         active: true,
     })
+    console.log(prices)
     return prices
 }
 
