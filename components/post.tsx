@@ -1,6 +1,6 @@
 function Post({content}:{content:string}) {
   return (
-    <div className="" dangerouslySetInnerHTML={{ __html: content.replaceAll('\n','<br/>') }}></div>
+    <ul className="list-disc list-inside" dangerouslySetInnerHTML={{ __html: '<li>'+content.replaceAll('\n','</li><li>').replaceAll('-','') }}></ul>
   );
 }
 

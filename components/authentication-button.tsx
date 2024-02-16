@@ -26,10 +26,9 @@ import {
 } from "@/components/ui/dialog"
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { LogOut } from "lucide-react";
-import ConnectButton from "./connect-button";
 import { cn } from "@/lib/utils";
 
-export default function AuthenticationButton(props: { user: any, className:string }) {
+export default function AuthenticationButton(props: { user: any}) {
   const [email, setEmail] = useState('');
   const [token, setToken] = useState('');
   const [sent, setSent] = React.useState(false)
@@ -37,7 +36,7 @@ export default function AuthenticationButton(props: { user: any, className:strin
   const [logoutLoader, setLogoutLoader] = React.useState(false)
   const [open, setOpen] = React.useState(false)
 
-  const isDesktop = useMediaQuery("(min-width: 768px)");
+  const isDesktop = useMediaQuery("(min-width: 640px)");
 
   function resetAuth() {
     setEmail('')
@@ -53,9 +52,7 @@ export default function AuthenticationButton(props: { user: any, className:strin
     return (
       <Button
         type="submit"
-        className={cn(props.className,
-          "rounded-md bg-red-100/50  dark:bg-red-900/50 px-3.5 py-2.5 text-sm  text-red-500 ring-1 ring-red-300 dark:ring-red-900  hover:bg-red-200 dark:hover:bg-red-900/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
-          )}
+        variant='destructive'
         onClick={
           async () => {
             setLogoutLoader(true)
@@ -88,7 +85,12 @@ export default function AuthenticationButton(props: { user: any, className:strin
         <DialogTrigger
           asChild
         >
-          <ConnectButton setOpen={setOpen} className={props.className}/>
+          <Button
+          variant='default'
+          onClick={()=>setOpen(true)}
+          >
+            connect
+          </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
@@ -175,7 +177,11 @@ export default function AuthenticationButton(props: { user: any, className:strin
       <DrawerTrigger
         asChild
       >
-        <ConnectButton setOpen={setOpen} className={props.className}/>
+        <Button
+        onClick={()=>setOpen(true)}
+        >
+          connect
+        </Button>
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>

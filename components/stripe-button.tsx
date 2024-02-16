@@ -21,7 +21,6 @@ import {
 
 export default function StripeButton({
     className,
-    children,
     currentTier,
     tier,
     email,
@@ -30,7 +29,6 @@ export default function StripeButton({
     subscriptionId
 }: {
     className?: string,
-    children: React.ReactNode,
     currentTier: number | undefined,
     tier: number,
     email: string,
@@ -124,13 +122,13 @@ export default function StripeButton({
     }
     return (
         <Button
-            className={className} size="lg"
+            className={className} 
             onClick={async () => {
                 const checkoutSessionUrl = await getStripeCheckout(email, userId, priceId, tier)
                 if (checkoutSessionUrl) router.push(checkoutSessionUrl) // redirect to stripe checkout
             }}
         >
-            {children}
+            Buy plan
         </Button>
     )
 }

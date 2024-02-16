@@ -1,11 +1,9 @@
 import APIKeyInput from '@/components/api-key-input'
-import { getPrices, getStripeCheckout } from '@/components/server/stripe'
+import { getPrices } from '@/components/server/stripe'
 import { getUser, getUserData } from '@/components/server/database'
 import StripeButton from '@/components/stripe-button'
 import { CheckIcon } from '@heroicons/react/20/solid'
-import { Button } from '@nextui-org/react'
 import { User } from '@supabase/supabase-js'
-import { redirect } from 'next/navigation'
 
 function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ')
@@ -46,7 +44,7 @@ export default async function SubscribePage() {
             ],
             currentTier: userData?.tier == 1,
             nickname: "starter",
-            tier:1,
+            tier: 1,
         },
         {
             name: 'Enterprise',
@@ -61,19 +59,36 @@ export default async function SubscribePage() {
             ],
             currentTier: userData?.tier == 2,
             nickname: "enterprise",
-            tier:2,
+            tier: 2,
         },
     ]
     return (
         <div className=" py-8 sm:py-12 flex flex-col gap-8 max-w-5xl px-6">
             {user ?
-                <APIKeyInput user={user} apiKey={userData?.api_key}></APIKeyInput>
+                <div className="flex flex-col gap-4">
+                    <div>
+                        <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-100">
+                            Email
+                        </label>
+                        <div className="mt-2 relative rounded-md shadow-sm">
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                className="bg-background block w-full rounded-md border-0 py-1.5 pr-10 pl-2 text-gray-900 dark:text-gray-100 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
+                                readOnly
+                                value={user?.email}
+                            />
+                        </div>
+                    </div>
+                    <APIKeyInput user={user} apiKey={userData?.api_key} />
+                </div>
                 :
                 <></>
             }
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="mx-auto max-w-4xl text-center">
-                    <h2 className="text-base font-semibold leading-7 text-green-500">Pricing</h2>
+                    <h2 className="text-base font-semibold leading-7 text-green-500">Subscription</h2>
                     <p className="mt-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl">
                         Find the right price for your needs
                     </p>
@@ -136,14 +151,9 @@ export default async function SubscribePage() {
                                     priceId={prices.data.find(price => price.nickname == tier.nickname)?.id}
                                     aria-describedby={tier.id}
                                     className={classNames(
-                                        tier.currentTier
-                                            ? 'bg-green-600 text-white shadow-sm hover:bg-green-500'
-                                            : 'text-green-500 ring-1 ring-inset ring-green-500 hover:ring-green-800 dark:ring-green-800 dark:hover:ring-green-100',
-                                        'mt-8 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600'
+                                        "mt-4"
                                     )}
-                                >
-                                    {tier.currentTier ? "Cancel" : "Buy plan"}
-                                </StripeButton>
+                                />
                             }
                         </div>
                     ))}

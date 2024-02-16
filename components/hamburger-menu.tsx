@@ -1,5 +1,4 @@
 'use client'
-import { useBreakpoints } from "@/hooks/use-media-query";
 import {
     Sheet,
     SheetClose,
@@ -15,13 +14,18 @@ import { useState } from "react";
 import { Menu } from "lucide-react"
 import SubscriptionButton from "./subscription-button";
 import AuthenticationButton from "./authentication-button";
+import { useMediaQuery } from "@/hooks/use-media-query";
 export default function HamburgerMenu({ user }: { user: any }) {
     const [open, setOpen] = useState(false)
+
+    const isDesktop = useMediaQuery("(min-width: 640px)");
+    
+    if (isDesktop) return null
     return (
         <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger className="flex lg:hidden items-center" onClick={() => setOpen(true)} asChild>
-                <Button variant={"outline"}
-                    className="rounded-md ring-1  ring-green-500 px-3.5 py-2.5 text-sm  dark:text-gray-100 text-black shadow-sm hover:bg-gray-300 dark:hover:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
+            <SheetTrigger className="flex sm:hidden items-center" onClick={() => setOpen(true)} asChild>
+                <Button 
+                variant="outline"
                 >
                     <Menu />
                 </Button>
@@ -42,7 +46,7 @@ export default function HamburgerMenu({ user }: { user: any }) {
                         :
                         ''
                     }
-                    <AuthenticationButton user={user} className=""></AuthenticationButton>
+                    <AuthenticationButton user={user}></AuthenticationButton>
                 </div>
             </SheetContent>
         </Sheet>
