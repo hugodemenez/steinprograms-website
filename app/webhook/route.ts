@@ -57,18 +57,18 @@ async function handleStripeWebhook(body: any) {
     const type = body.type;
 
     // console.log everything above REMOVE BEFORE PRODUCTION.
-    // console.log("mode --->", mode);
+    console.log("mode --->", mode);
     console.log("webhook type --->", type);
-    // console.log("id --->", id);
-    // console.log("obj --->", obj);
-    // console.log("stat --->", stat);
-    // console.log("status --->", status);
-    // console.log("payment_intent --->", payment_intent);
+    console.log("id --->", id);
+    console.log("obj --->", obj);
+    console.log("stat --->", stat);
+    console.log("status --->", status);
+    console.log("payment_intent --->", payment_intent);
     console.log("subId --->", subId);
-    // console.log("stripeInvoiceId --->", stripeInvoiceId);
-    // console.log("user --->", user);
-    // console.log("meta --->", meta);
-    // console.log("stripe_invoice --->", stripe_invoice);
+    console.log("stripeInvoiceId --->", stripeInvoiceId);
+    console.log("user --->", user);
+    console.log("meta --->", meta);
+    console.log("stripe_invoice --->", stripe_invoice);
 
     // Switch on the event type.
     switch (type) {
@@ -292,8 +292,9 @@ async function handleStripeWebhook(body: any) {
          * This is the webhook that is fired when a customer's subscription is deleted.
          */
         case "customer.subscription.deleted":
-            console.log('Deleting subscription', subId)
-            await cancelDatabaseSubscription(subId);
+
+            console.log('Deleting subscription', id)
+            await cancelDatabaseSubscription(id);
             // Add logic for handling the deletion of a customer's subscription
             return new Response(
                 JSON.stringify({ message: "Customer subscription deleted!" }),

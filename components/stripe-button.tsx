@@ -6,6 +6,19 @@ import { getStripeCheckout, cancelStripeSubscription, updateStripeSubscription }
 import { updateDatabaseSubscription } from "./server/database"
 import { toast } from "sonner"
 
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+
+
 export default function StripeButton({
     className,
     children,
@@ -34,41 +47,79 @@ export default function StripeButton({
         // We know if currentTier == tier, then user is already subscribed to this tier
         if (currentTier == tier) {
             return (
-                <Button
-                    className={className} size="lg"
-                    onClick={async () => {
-                        try{
-                            const {error} = await cancelStripeSubscription(subscriptionId)
-                            if (error) throw error
-                            toast.success('Subscription cancelled')
-                            setTimeout(()=>router.refresh(),1000) // update ui with database latest
-                        }
-                        catch (err:any) {
-                            toast.error(`${err} mostly due to subscription already cancelled`)
-                        }
-                    }}
-                >
-                    Cancel
-                </Button>
+                <AlertDialog>
+                    <AlertDialogTrigger
+                        className={className}
+                    >
+                        Cancel
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                        <AlertDialogHeader>
+                            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                            <AlertDialogDescription>
+                                This action cannot be undone. This will permanently cancel your subscription
+                                and remove your data from our servers. You'll loose access to all features right away.
+                                We are working on a way to keep your subscription until the end of billing period.
+                            </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                            <AlertDialogAction
+                                onClick={async () => {
+                                    try {
+                                        const { error } = await cancelStripeSubscription(subscriptionId)
+                                        if (error) throw error
+                                        toast.success('Subscription cancelled')
+                                        setTimeout(() => router.refresh(), 1000) // update ui with database latest
+                                    }
+                                    catch (err: any) {
+                                        toast.error(`${err} mostly due to subscription already cancelled`)
+                                    }
+                                }}
+                            >Continue</AlertDialogAction>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialog>
+
             )
         }
         return (
-            <Button
-                className={className} size="lg"
-                onClick={async () => {
-                    try {
-                        const {error} = await updateStripeSubscription(subscriptionId, priceId, userId, tier)
-                        if (error) throw error
-                        toast.success('Subscription updated')
-                        setTimeout(()=>router.refresh(),1000) // update ui with database latest
-                    }
-                    catch (err:any) {
-                        toast.error(`${err} mostly due to subscription already cancelled`)
-                    }
-                }}
-            >
-                Upgrade
-            </Button>
+            // Should trigger a model to confirm upgrade
+            <AlertDialog>
+                <AlertDialogTrigger
+                    className={className}
+                >
+                    Upgrade
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                    <AlertDialogHeader>
+                        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                        <AlertDialogDescription>
+                            This action cannot be undone. This will permanently upgrade your subscription
+                            and charge your card with raminings of the new subscription.
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogAction
+                            onClick={async () => {
+                                try {
+                                    const { error } = await updateStripeSubscription(subscriptionId, priceId, userId, tier)
+                                    if (error) throw error
+                                    toast.success('Subscription updated')
+                                    setTimeout(() => router.refresh(), 1000) // update ui with database latest
+                                }
+                                catch (err: any) {
+                                    toast.error(`${err} mostly due to subscription already cancelled`)
+                                }
+                            }}
+                        >
+                            Continue
+                        </AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
+
         )
     }
     return (
