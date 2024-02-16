@@ -5,7 +5,7 @@
 export async function getLatestNews(symbol:string){
     try{
         const result = await fetch(
-            `http://api.steinprograms.com:5050/news?symbol=${symbol}&summarize=true&sentiment=true`,{
+            `${process.env.API_DOMAIN}/news?symbol=${symbol}&summarize=true&sentiment=true`,{
                 next: { revalidate: 3600 },
                 method: 'GET',
                 headers: {
