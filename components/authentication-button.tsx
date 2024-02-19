@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input"
 import { toast } from "sonner";
 import { sendOTP, validateOTP } from "./server/otp";
 import { ReloadIcon } from "@radix-ui/react-icons"
-import { logout } from "./server/user";
+import { logout } from "./server/database";
 import {
   Dialog,
   DialogContent,
@@ -25,16 +25,18 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { useMediaQuery } from "@/hooks/use-media-query";
+import { LogOut } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-export default function Authentication(props: { user: any }) {
+export default function AuthenticationButton(props: { user: any}) {
   const [email, setEmail] = useState('');
   const [token, setToken] = useState('');
   const [sent, setSent] = React.useState(false)
   const [loading, setLoading] = React.useState(false)
   const [logoutLoader, setLogoutLoader] = React.useState(false)
-
   const [open, setOpen] = React.useState(false)
-  const isDesktop = useMediaQuery("(min-width: 768px)");
+
+  const isDesktop = useMediaQuery("(min-width: 640px)");
 
   function resetAuth() {
     setEmail('')
@@ -43,12 +45,14 @@ export default function Authentication(props: { user: any }) {
     setLoading(false)
     setOpen(false)
   }
+
   // If there is a user, display log out button
+
   if (props.user) {
     return (
       <Button
         type="submit"
-        className="rounded-none bg-red-100/50  dark:bg-red-900/50 px-3.5 py-2.5 text-sm  text-red-600 shadow-sm hover:bg-red-100/30 dark:hover:bg-red-900/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
+        variant='destructive'
         onClick={
           async () => {
             setLogoutLoader(true)
@@ -59,12 +63,14 @@ export default function Authentication(props: { user: any }) {
         }
       >
         {logoutLoader ?
-          <>
+          <div className="flex gap-2 items-center">
             <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
             Logging out
-          </>
+          </div>
           :
-          "Disconnect"
+          <div className="flex items-center">
+          <LogOut /> 
+          </div>
         }
       </Button>
     )
@@ -78,20 +84,22 @@ export default function Authentication(props: { user: any }) {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger
           asChild
-          className="rounded-none bg-blue-100/50 dark:bg-blue-900/50 px-3.5 py-2.5 text-sm  text-blue-600 shadow-sm hover:bg-blue-200/50 dark:hover:bg-blue-900/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
         >
-          <Button>
-            Login
+          <Button
+          variant='default'
+          onClick={()=>setOpen(true)}
+          >
+            connect
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>Authentication</DialogTitle>
             <DialogDescription>
-              {!sent ? "Please enter a valid email address" : "Please enter OTP we've sent to " + email}
+              {!sent ? "Please enter a valid email address" : "Check " + email + " inbox"}
             </DialogDescription>
           </DialogHeader>
-          <div className="flex gap-4 flex-col max-w-sm mx-auto">
+          <form className="flex gap-4 flex-col max-w-sm mx-auto">
             {!sent ?
               <>
                 <Input
@@ -159,22 +167,26 @@ export default function Authentication(props: { user: any }) {
                 }
               </>
             }
-          </div>
+          </form>
         </DialogContent>
       </Dialog>
     )
   }
   return (
-    <Drawer>
+    <Drawer shouldScaleBackground open={open} onOpenChange={setOpen}>
       <DrawerTrigger
-        className="rounded-none bg-blue-100/50 dark:bg-blue-900/50 px-3.5 py-2.5 text-sm  text-blue-600 shadow-sm hover:bg-blue-200/50 dark:hover:bg-blue-900/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+        asChild
       >
-        Login
+        <Button
+        onClick={()=>setOpen(true)}
+        >
+          connect
+        </Button>
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
           <DrawerTitle>Authentication</DrawerTitle>
-          <DrawerDescription>{!sent ? "Please enter a valid email address" : "Please enter OTP we've sent to " + email}</DrawerDescription>
+          <DrawerDescription>{!sent ? "Please enter a valid email address" : "Check " + email + " inbox"}</DrawerDescription>
         </DrawerHeader>
         <div className="flex gap-4 flex-col max-w-sm mx-auto">
           {!sent ?

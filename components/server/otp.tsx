@@ -3,7 +3,6 @@ import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 
 export async function sendOTP(email:string){
-    console.log("Sending otp code to ",email)
   const supabase = createRouteHandlerClient({ cookies })
     // Redirects the user to OTP modal form
   const { data, error } = await supabase.auth.signInWithOtp({
