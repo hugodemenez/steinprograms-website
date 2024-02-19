@@ -57,7 +57,7 @@ npm run dev
 ```
 
 ## API Documentation
-For detailed information on how to utilize the Steinprograms API, including endpoints and authentication, visit the [official documentation](http://api.steinprograms.com/doc).
+For detailed information on how to utilize the Steinprograms API, including endpoints and authentication, visit the [official documentation](http://api.steinprograms.com:5050/docs).
 
 ## Contibutors
 
