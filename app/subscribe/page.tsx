@@ -64,32 +64,10 @@ export default async function SubscribePage() {
     ]
     return (
         <div className=" py-8 sm:py-12 flex flex-col gap-8 max-w-5xl px-6">
-            {user ?
-                <div className="flex flex-col gap-4">
-                    <div>
-                        <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-100">
-                            Email
-                        </label>
-                        <div className="mt-2 relative rounded-md shadow-sm">
-                            <input
-                                type="email"
-                                name="email"
-                                id="email"
-                                className="bg-background block w-full rounded-md border-0 py-1.5 pr-10 pl-2 text-gray-900 dark:text-gray-100 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
-                                readOnly
-                                value={user?.email}
-                            />
-                        </div>
-                    </div>
-                    <APIKeyInput user={user} apiKey={userData?.api_key} />
-                </div>
-                :
-                <></>
-            }
-            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="">
                 <div className="mx-auto max-w-4xl text-center">
                     <h2 className="text-base font-semibold leading-7 text-green-500">Subscription</h2>
-                    <p className="mt-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl">
+                    <p className="mt-2 text-4xl font-normal uppercase tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl">
                         Find the right price for your needs
                     </p>
                 </div>
@@ -98,7 +76,7 @@ export default async function SubscribePage() {
                     <br />
                     Enjoy transparent pricing with no hidden fees and fast access to premium features.
                 </p>
-                <div className="isolate mx-auto mt-16 grid max-w-md grid-cols-1 gap-y-8 sm:mt-20 lg:mx-0 lg:gap-x-4 lg:max-w-none lg:grid-cols-3">
+                <div className="isolate mt-16 grid max-w-5xl grid-cols-1 gap-y-8 sm:mt-20 lg:gap-x-4  lg:grid-cols-3">
                     {tiers.map((tier, tierIdx) => (
                         <div
                             key={tier.id}
@@ -159,6 +137,28 @@ export default async function SubscribePage() {
                     ))}
                 </div>
             </div>
+            {user ?
+                <div className="flex flex-col gap-4">
+                    <div>
+                        <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-100">
+                            Email
+                        </label>
+                        <div className="mt-2 relative rounded-md shadow-sm">
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                className="bg-background block w-full rounded-md border-0 py-1.5 pr-10 pl-2 text-gray-900 dark:text-gray-100 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
+                                readOnly
+                                value={user?.email}
+                            />
+                        </div>
+                    </div>
+                    <APIKeyInput user={user} apiKey={userData?.api_key} />
+                </div>
+                :
+                <></>
+            }
         </div>
     )
 }

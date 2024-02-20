@@ -48,8 +48,13 @@ export default function StripeButton({
                 <AlertDialog>
                     <AlertDialogTrigger
                         className={className}
+                        asChild
                     >
-                        Cancel
+                        <Button
+                            variant='outline'
+                        >
+                            Cancel
+                        </Button>
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                         <AlertDialogHeader>
@@ -86,8 +91,11 @@ export default function StripeButton({
             <AlertDialog>
                 <AlertDialogTrigger
                     className={className}
+                    asChild
                 >
-                    Upgrade
+                    <Button>
+                        Upgrade
+                    </Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                     <AlertDialogHeader>
@@ -122,7 +130,7 @@ export default function StripeButton({
     }
     return (
         <Button
-            className={className} 
+            className={className}
             onClick={async () => {
                 const checkoutSessionUrl = await getStripeCheckout(email, userId, priceId, tier)
                 if (checkoutSessionUrl) router.push(checkoutSessionUrl) // redirect to stripe checkout
