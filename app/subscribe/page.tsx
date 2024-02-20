@@ -26,7 +26,6 @@ export default async function SubscribePage() {
             features: [
                 '5 requests/min',
                 'Access to BTC market',
-                'Sentiment score',
                 '1 week history'
             ],
             currentTier: userData?.tier == 0,
@@ -40,7 +39,8 @@ export default async function SubscribePage() {
                 '10 requests/min',
                 'Access to all markets',
                 'Sentiment analysis',
-                '12 months history'
+                'News summary',
+                '12 months history',
             ],
             currentTier: userData?.tier == 1,
             nickname: "starter",
@@ -53,8 +53,8 @@ export default async function SubscribePage() {
             priceMonthly: '$50',
             description: 'Dedicated support and infrastructure for your company.',
             features: [
-                '1000 requests/min',
-                'Everything in student tier',
+                'Everything included in other plans',
+                '100 requests/min',
                 '1-hour, dedicated support response time',
             ],
             currentTier: userData?.tier == 2,
