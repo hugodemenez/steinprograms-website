@@ -7,9 +7,9 @@ import { Dispatch, SetStateAction } from "react";
 export default function PageLinks({className, setOpen}:{className?:string, setOpen?:Dispatch<SetStateAction<boolean>>}) {
     const pathname = usePathname()
     const pages = [
-        {name: 'Crypto', path: '/crypto'},
-        {name: 'Firms', path: '/firms'},
-        {name: 'Politics', path: '/politics'},
+        {name: 'Crypto Blog', path: '/crypto'},
+        // {name: 'Firms', path: '/firms'},
+        // {name: 'Politics', path: '/politics'},
     ]
     return (
         <div className={cn("flex gap-4",className)}>
