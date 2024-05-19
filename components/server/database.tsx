@@ -2,7 +2,6 @@
 import { Database } from '@/types/supabase';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
-import { User } from 'lucide-react';
 import { cookies } from 'next/headers';
 
 export async function getUser() {
