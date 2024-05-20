@@ -3,10 +3,14 @@
 
 
 export async function getLatestNews(symbol:string){
+    console.log("Fetching news",
+            `${process.env.API_DOMAIN}/news?symbol=${symbol}&summarize=true&sentiment=true`
+    )
     try{
         const result = await fetch(
             `${process.env.API_DOMAIN}/news?symbol=${symbol}&summarize=true&sentiment=true`,{
-                next: { revalidate: 3600 },
+                cache: 'no-store',
+                // next: { revalidate: 3600 },
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
