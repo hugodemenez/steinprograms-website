@@ -26,6 +26,7 @@ export async function getLatestNews(symbol:string){
         return {data:data}
     }
     catch(e:any){
+        console.log(e)
         return {data:[],error:e.message}
     }
 }
