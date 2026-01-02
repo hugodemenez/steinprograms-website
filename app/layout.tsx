@@ -25,7 +25,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className={cn(myFont.className,'dark:dark bg-background')} >
-      <body className="col-start-2 m-0 flex flex-col  overflow-x-hidden min-h-screen   dark:dark scroll-smooth">
+      <body className="m-0 flex flex-col  overflow-x-hidden min-h-screen   dark:dark scroll-smooth">
         <Providers>
           <div className='min-h-screen max-w-5xl mx-auto'>
           <Header></Header>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect, useCallback, useState } from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 import { Chart as ChartJS, registerables } from 'chart.js';
 
 const Chart = ({ data }: { data: any }) => {
@@ -71,8 +71,8 @@ const Chart = ({ data }: { data: any }) => {
     }, [data]);
 
     return (
-        <div className='-translate-y-4 '>
-        <canvas ref={chartContainerRef} id='chart' />
+        <div className='-translate-y-4 h-[488px]'>
+        <canvas ref={chartContainerRef} id='chart' className='w-full h-full' />
         </div>
     )
 };

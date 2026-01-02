@@ -6,11 +6,11 @@ export default async function Home() {
     return (
         <div className="py-6 lg:py-24 px-6">
             <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-                <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:text-gray-300 dark:ring-gray-600 dark:hover:ring-gray-700">
+                <div className="font-sans relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:text-gray-300 dark:ring-gray-600 dark:hover:ring-gray-700">
                     Announcing our next roadmap for 2024.{' '}
                     <Link
                         href="#roadmap"
-                        className="font-semibold text-green-500"
+                        className="text-green-500"
                     >
                         <span className="absolute inset-0" aria-hidden="true" />
                         Read more <span aria-hidden="true">&rarr;</span>
@@ -23,7 +23,7 @@ export default async function Home() {
                         Unlocking the <span className='text-green-500 underline'>Secrets</span> of Cryptocurrency Markets
                     </h1>
                     <SearchBar></SearchBar>
-                    <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-500">
+                    <p className="font-sans mt-6 text-lg leading-8 text-gray-600 dark:text-gray-500">
                         Welcome to the future of cryptocurrency investment and decision-making. In an era where information is power, our cutting-edge algorithm brings you a strategic advantage like never before.
                     </p>
                 </div>
