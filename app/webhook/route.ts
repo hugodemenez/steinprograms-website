@@ -11,7 +11,6 @@
  * @url https://github.com/tego101/nextjs-14-stripe-webhooks
  */
 import Stripe from "stripe";
-import { NextApiRequest, NextApiResponse } from "next";
 import { cancelDatabaseSubscription, updateDatabaseSubscription as updateDatabaseSubscription } from "@/components/server/database";
 
 
@@ -390,7 +389,7 @@ async function POST(request: Request) {
     }
 }
 
-async function GET(request: Request, response: Response) {
+async function GET(request: Request) {
     // Bad Request or how ever you want to respond.
     return new Response(JSON.stringify({ error: "Webhook handler failed." }), {
         status: 500, // Changed to 500, indicating a server error

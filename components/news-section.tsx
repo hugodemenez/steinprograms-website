@@ -1,4 +1,4 @@
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { createServerClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { Database, Tables } from '../types/supabase'
 import { CryptoLogo } from '../components/crypto-logos'
@@ -6,19 +6,55 @@ import Score from './score'
 import Link from 'next/link'
 import { getUser } from './server/database'
 
-export default async function NewsSection() {
+async function getSupabaseClient() {
+  // Check if Supabase is configured
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  
+  if (!supabaseUrl || !supabaseKey) {
+    return null;
+  }
 
-  const supabase = createServerComponentClient<Database>({ cookies });
+  try {
+    const cookieStore = await cookies();
+    return createServerClient<Database>(
+      supabaseUrl,
+      supabaseKey,
+      {
+        cookies: {
+          getAll() {
+            return cookieStore.getAll();
+          },
+          setAll(cookiesToSet) {
+            cookiesToSet.forEach(({ name, value, options }) => {
+              cookieStore.set(name, value, options);
+            });
+          },
+        },
+      }
+    );
+  } catch (error) {
+    console.warn('Failed to create Supabase client:', error);
+    return null;
+  }
+}
+
+export default async function NewsSection() {
+  const supabase = await getSupabaseClient();
   const user = await getUser()
 
   // Get types from supabase
-  var data: Tables<'marketnews'>[] | null;
+  var data: Tables<'marketnews'>[] | null = null;
 
-  if (user) {
-    var { data } = await supabase.from('marketnews').select().order('created_at', { ascending: false })
-  }
-  else {
-    var { data } = await supabase.from('marketnews_free').select().order('created_at', { ascending: false })
+  if (supabase) {
+    if (user) {
+      var { data: userData } = await supabase.from('marketnews').select().order('created_at', { ascending: false })
+      data = userData;
+    }
+    else {
+      var { data: freeData } = await supabase.from('marketnews_free').select().order('created_at', { ascending: false })
+      data = freeData;
+    }
   }
 
 

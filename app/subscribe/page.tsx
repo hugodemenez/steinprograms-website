@@ -16,6 +16,7 @@ export default async function SubscribePage() {
     // If not, create a checkout session
     const subscriptionId = userData?.subscriptionId
     const prices = await getPrices()
+    const pricesData = prices?.data || []
 
     const tiers = [
         {
@@ -148,7 +149,7 @@ export default async function SubscribePage() {
                                     tier={tier.tier}
                                     email={user.email}
                                     userId={user.id}
-                                    priceId={prices.data.find(price => price.nickname == tier.nickname)?.id}
+                                    priceId={pricesData.find(price => price.nickname == tier.nickname)?.id}
                                     aria-describedby={tier.id}
                                     className={classNames(
                                         "mt-4"
